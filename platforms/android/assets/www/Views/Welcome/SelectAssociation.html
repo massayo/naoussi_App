@@ -1,0 +1,35 @@
+﻿<section class="screen logged-out" id={{containerId}}>
+    {{> header}}
+    <h1>{{dictionary.SelectAssoc_Title}}</h1>
+    <form id="selectAssociationForm">
+        <fieldset class="flex"> 
+
+            <p class="m-after">{{dictionary.SelectAssoc_Text}}</p>
+            <span class="error-group">
+                <div>
+                
+                    <select id="association" name="association" title="{{dictionary.SelectAssoc_required}}" class="m-after" onChange="window.app.screens.selectAssociation.refreshPreferredLanguageContainer();">
+                        {{#each data.associations}}
+                            <option value="{{id}}">{{name}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+            </span>
+            <div id="preferredLanguage-container" class="group-wrapper vertical flex-stretch">
+                <p class="dark subText">{{dictionary.SelectAssoc_PreferredLanguage}}</p>
+                <div class="control-group full-width">
+                    <select id="preferredLanguage" name="preferredLanguage" class="full-width">
+                        <option value="en-CA">English</option>
+                        <option value="fr-CA">Fran&ccedil;ais</option>
+                    </select>
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-actions">
+            <button type="submit" class="btn primary half-width" id="selectAssociation-continue"><span>{{dictionary.SelectAssoc_Continue}}</span></button>
+            <a class="btn alternative half-width m-right" onclick="window.app.screens.welcome.show();">{{dictionary.SelectAssoc_Exit}}</a>
+        </div>
+    </form>
+        
+    {{> footer}}
+</section>

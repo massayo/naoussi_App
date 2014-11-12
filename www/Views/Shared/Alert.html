@@ -1,0 +1,15 @@
+﻿<section class="screen" id="{{containerId}}">
+    {{> header}}
+    <div id="alertContainerForm">
+        <h1>{{dictionary.Alert_Title}}</h1>
+        <fieldset class="flex m-after-default"> 
+        {{#each alerts}}
+            <div class="m-after-default">
+                <p><strong>{{date}}</strong></p>
+                <p>{{{text}}}</p>
+            </div>
+        {{/each}}
+        </fieldset>
+    </div>
+    {{> footer}}
+</section>

@@ -1,0 +1,21 @@
+﻿<div class="status-bar">
+    
+</div>
+<header class="header">
+    <nav>     
+        {{#if profile}}
+            <a class="btn {{#unless hasBackButton}}hidden{{/unless}}" onclick="window.app.currentScreen.back();" id="headerPreviousPlaceHolder">
+                </a>
+            <h1>{{screenTitle}}</h1>
+            <a class="btn" id="headerLogoutButton" onclick="window.app.currentScreen.logout();"><span>{{dictionary.MainMenu_Logout}}</span></a>
+        {{else}}
+            <a class="btn {{#unless hasBackButton}}hidden{{/unless}}" onclick="window.app.currentScreen.back();" id="headerPreviousPlaceHolder">
+                </a>
+            <h1>{{screenTitle}}</h1>
+            <a class="btn {{#unless dictionary.MainMenu_Support}}hidden{{/unless}}" onclick="window.app.screens.mainMenu.support();">
+                <span>{{dictionary.MainMenu_Support}}</span></a>
+        {{/if}}
+    </nav>
+    <div class="banner" onclick="showConnection();"><img src="data:image/jpeg;base64,{{appData.headerLogo.presentation}}" alt="" /></div>
+</header>
+<div class="main">

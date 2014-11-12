@@ -1,0 +1,19 @@
+﻿<section class="screen getStarted logged-out" id="{{containerId}}">
+    {{> header}}
+        
+    <div id="getStartedCarousel" class="carousel slide">
+        <div class="carousel-inner">
+            {{#each-first-active data}}
+            <div class="item {{active}}">
+                <img alt="" src="data:image/jpeg;base64,{{presentation}}" />
+            </div>
+            {{/each-first-active}}
+        </div>
+        <a class="carousel-control left" href="#getStartedCarousel" data-slide="prev">&lsaquo;</a>
+        <a class="carousel-control right" href="#getStartedCarousel" data-slide="next">&rsaquo;</a>
+    </div>
+   
+    <button type="button" class="btn primary" id="getStarted-continue" style="z-index: 99;" onClick="window.app.screens.getStarted.next();">
+        <span>{{dictionary.GetStarted_Button}}</span>
+    </button>
+</section>

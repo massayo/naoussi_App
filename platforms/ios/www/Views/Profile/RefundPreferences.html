@@ -1,0 +1,105 @@
+﻿<section class="screen" id="{{containerId}}">
+    {{> header}}
+
+    <h1>{{dictionary.Profile_RefundPreferences_Title}}</h1>
+
+    <p class="dark center">{{dictionary.Profile_DirectDeposit_TitleText}}</p>
+        
+    <p class="subText center">{{dictionary.Profile_DirectDeposit_Text}}</p>
+
+    <div id="validationError" class="control-group error" style="display: none;">
+        {{dictionary.Profile_ValidationErrors}}
+    </div>
+        
+    <ul class="highlight m-after">
+        <li>
+            <a href="#" class="btn" onclick="showOverlay('Overlay-Banking-Information', '{{containerId}}'); return false;">{{dictionary.Profile_DirectDeposit_FindInformation}} <span class="ico">></span></a>
+        </li>
+    </ul>
+
+    <form id="profileForm" class="form-profile m-after-default">
+        <fieldset>
+            <input type="hidden" name="id" value="{{profile.id}}" />
+            <input type="hidden" name="refundType" value="direct" />
+        </fieldset>
+        <fieldset id="refundDirect">
+            <legend>{{dictionary.Profile_RefundPreferences_Direct_Title}}</legend>
+            <p class="subText legend-margin">{{dictionary.Profile_BankAccountBelongsTo_Text}}</p>
+            <div class="control-group">
+                <label class="control-label" for="bankAccountFirstName">{{dictionary.Profile_BankAccountFirstName_Label}}</label>
+                <input type="text" class="required" id="bankAccountFirstName" name="bankAccountFirstName" value="{{profile.bankAccountFirstName}}" placeholder="{{dictionary.Profile_BankAccountFirstName_PlaceHolder}}" />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="bankAccountLastName">{{dictionary.Profile_BankAccountLastName_Label}}</label>
+                <input type="text" class="required" id="bankAccountLastName" name="bankAccountLastName" value="{{profile.bankAccountLastName}}" placeholder="{{dictionary.Profile_BankAccountLastName_PlaceHolder}}" />
+            </div>
+        </fieldset>
+        <fieldset>
+            <p class="subText">{{dictionary.Profile_FinancialInstitution_Text}}</p>
+
+            <div class="control-group">
+                <label class="control-label" for="bankName">{{dictionary.Profile_Bank_Label}}</label>
+                <input type="text" class="required" id="bankName" name="bankName" value="{{profile.bankName}}" placeholder="{{dictionary.Profile_Bank_PlaceHolder}}" title="{{dictionary.Profile_Bank_Required}}" />
+            </div>
+
+        </fieldset>
+            <p class="subText">{{dictionary.Profile_FinancialInstitutionNumber_Text}}</p>
+        <fieldset>
+            <div class="control-group">
+                <label class="control-label" for="bankNumber">{{dictionary.Profile_BankNumber_Label}}</label>
+                <input type="text" class="" id="bankNumber" name="bankNumber" value="{{profile.bankNumber}}" placeholder="{{dictionary.Profile_BankNumber_PlaceHolder}}" title="{{dictionary.Profile_BankNumber_Required}}" />
+            </div>
+        </fieldset>
+            <p class="subText">{{dictionary.Profile_FinancialTransitNumber_Text}}</p>
+        <fieldset>
+            <div class="control-group">
+                <label class="control-label" for="bankTransitNumber">{{dictionary.Profile_BankTransitNumber_Label}}</label>
+                <input type="text" class="" id="bankTransitNumber" name="bankTransitNumber" value="{{profile.bankTransitNumber}}" placeholder="{{dictionary.Profile_BankTransitNumber_PlaceHolder}}" title="{{dictionary.Profile_BankTransitNumber_Required}}" />
+            </div>
+        </fieldset>
+        <fieldset>
+            <p class="subText">{{dictionary.Profile_FinancialAccountNumber_Text}}</p>
+            <div class="control-group">
+                <label class="control-label" for="bankAccountNumber">{{dictionary.Profile_AccountNumber_Label}}</label>
+                {{#if profile.bankAccountNumber}}                    
+                <input type="password" class="required" id="bankAccountNumber" name="bankAccountNumber" value="{{profile.bankAccountNumber}}" placeholder="{{dictionary.Profile_BankAccountNumber_PlaceHolder}}" title="{{dictionary.Profile_AccountNumber_Required}}" maxlength="20" />
+                {{else}}
+                <input type="text" class="required" id="bankAccountNumber" name="bankAccountNumber" value="{{profile.bankAccountNumber}}" placeholder="{{dictionary.Profile_BankAccountNumber_PlaceHolder}}" title="{{dictionary.Profile_AccountNumber_Required}}" maxlength="20" />
+                {{/if}}
+            </div>
+        </fieldset>
+            <div class="form-actions">
+                <button type="submit" class="btn primary half-width m-left">   
+                    <span>                 
+                        {{#if mobileApp.isInProfileWizard }}
+                            {{dictionary.Profile_SaveContinue}}
+                        {{else}}
+                            {{dictionary.Profile_Submit}}
+                        {{/if}}
+                    </span>
+                </button>
+                <a href="#" class="btn secondary half-width" onclick="window.app.screens.refundPreferences.cancel();">{{dictionary.Profile_Cancel}}</a>
+            </div>
+    </form>
+        
+    {{> footer}}
+</section>
+    
+<div id="Overlay-Banking-Information" class="overlay" style="display:none;">
+    <section class="screen logged-out">
+        <header class="header">
+            <nav>
+                <a class="btn" onclick="hideOverlay('Overlay-Banking-Information', '{{containerId}}'); return false;" id="headerPreviousPlaceHolder">{{dictionary.Common_Back}}</a>
+                <h1>{{dictionary.Profile_BankingTitle}}</h1>
+            </nav>
+            <div class="banner">
+                <img alt="" src="data:image/jpeg;base64,{{appData.headerLogo.presentation}}" />
+            </div>
+        </header>
+        <div class="main">
+            <div class="main-overlay">
+                <img alt="" src="data:image/jpeg;base64,{{uiData.BankingInformation.presentation}}" />
+            </div>
+        </div>
+    </section>
+</div>

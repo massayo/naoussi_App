@@ -1,0 +1,9 @@
+﻿<section class="screen" id="{{containerId}}">
+    {{> header}}
+    <h1>{{dictionary.Profile_CompletedWizard_Title}}</h1>
+    <p>{{{appData.completeProfileEndText}}}</p>
+    <a href="#" class="btn primary" onclick="window.app.screens.mainMenu.claim();">{{dictionary.MainMenu_FileClaim}}</a>
+    <a href="#" class="btn alternative" onclick="window.app.screens.mainMenu.profile();">{{dictionary.Profile_Manage}}</a>
+    <a href="#" class="btn secondary" onclick="window.app.screens.mainMenu.home();">{{dictionary.MainMenu_Home}}</a>
+    {{> footer}}
+</section>

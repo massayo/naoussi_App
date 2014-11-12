@@ -1,0 +1,70 @@
+﻿<section class="screen" id="{{containerId}}">
+    {{> header}}
+    <h1>{{dictionary.CoordinationBenefit_List_Title}}</h1>
+    <p class="dark left m-after">{{dictionary.CoordinationBenefit_SubText}}</p>
+    <p class="half-m-after">{{dictionary.CoordinationBenefit_List_Presentation}}</p>
+       
+        {{#if data.hasOtherInsurer}}
+            <ul>
+                {{#each data.insurers}}
+                    <li>
+                        <div class="group-wrapper">
+                            <div class="group-text-icon">
+                                <span class="group-text">
+                                    <strong>
+                                    {{#if isDfs}}
+                                        {{../../assocData.insurer.coordinationCurrentLabel}}
+                                    {{else}}
+                                        {{otherInsurerName}}
+                                    {{/if}}
+                                    </strong>   
+                                    ({{firstName}} {{lastName}})
+                                </span>
+                                <span class="group-icon">
+                                    <a href="#" onclick="window.app.screens.coordinationBenefitList.edit({{id}});" style="margin-right: 16px;">
+                                        <img src="data:image/jpeg;base64,{{../uiData.modifyIcon.thumbnail}}" alt="{{../uiData.modifyIcon.alt}}"/>
+                                    </a>
+                                    <a href="#" onclick="window.app.screens.coordinationBenefitList.deleteItem({{id}});">
+                                        <img src="data:image/jpeg;base64,{{../uiData.lessIcon.thumbnail}}" alt="{{../uiData.lessIcon.alt}}"/>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </li>               
+                {{/each}}
+            </ul>
+        {{else}}
+            <ul>
+                <li>
+                    <div class="group-wrapper">
+                        <div class="group-text-icon">
+                            <span class="group-text">
+                                {{dictionary.CoordinationBenefit_List_Empty}}
+                            </span>
+                        </div>
+                    </div>  
+                </li>
+            </ul> 
+        {{/if}}
+       
+    <fieldset>
+        <legend>{{dictionary.CoordinationBenefit_List_HowTo}}</legend>
+        <p class="subText legend-margin">{{{appData.coordinationBenefitText}}}</p>
+    </fieldset>
+    <div class="controls">
+        <button type="button" class="btn alternative" onclick="window.app.screens.coordinationBenefitList.add();">
+            <span>{{dictionary.CoordinationBenefit_List_Add}}</span>
+        </button>
+
+        {{#if mobileApp.isInProfileWizard}}
+            <a href="#" class="btn primary" onclick="window.app.screens.coordinationBenefitList.nextScreen().wizard.show();"><span>{{dictionary.Profile_SaveContinue}}</span>
+            </a>
+        {{/if}}
+
+        <a href="#" class="btn secondary" onclick="window.app.screens.mainMenu.profile();">
+            <span>{{dictionary.CoordinationBenefit_List_Cancel}}</span>
+        </a>
+    </div>
+        
+    {{> footer}}
+</section>

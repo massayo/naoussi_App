@@ -1,0 +1,15 @@
+﻿<section class="screen logged-out" id="{{containerId}}">
+    {{> header}}
+        <fieldset class="flex">
+            <div class="box-center" align="center">
+                <img src='data:image/jpeg;base64,{{uiData.CreateProfileConfirm.presentation}}' class="img-welcome" style="margin-bottom: 16px" />
+
+                {{{appData.createProfileConfirmationText}}}
+            </div>
+        </fieldset>
+            
+        <div class="form-actions">
+            <a href="#" class="btn primary" onclick="window.app.screens.welcome.show();">{{dictionary.Profile_Login}}</a>
+        </div>
+    {{> footer}}
+</section>

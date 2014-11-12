@@ -1,0 +1,14 @@
+﻿<section class="screen" id="{{containerId}}">
+    {{> header}}
+    <h1>{{dictionary.PayDirectCard_IntroTitle}}</h1>
+    <fieldset class="flex">
+        <p class="center">{{{appData.payDirectCardIntroText}}}</p>
+        
+        <div class="center m-before">
+            <a onclick="window.app.screens.payDirectCardIntro.next();">
+                <img src="data:image/jpeg;base64,{{appData.payDirectDemo.presentation}}" />
+            </a>
+        </div>
+    </fieldset>
+    {{> footer}}
+</section>

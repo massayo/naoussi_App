@@ -1,0 +1,12 @@
+﻿<section id="{{containerId}}" class="screen">
+    {{> header}}
+    <h1>{{dictionary.Benefit_List_Title}}</h1>
+    <fieldset class="flex cms-list">
+        <div class="header-group">
+            <img src="data:image/jpg;base64, {{model.benefitImage.presentation}}" />
+            <h3>{{model.shortDescription}}</h3>
+        </div>
+        {{{model.longDescription}}}
+    </fieldset>
+    {{> footer}}
+</section>

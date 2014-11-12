@@ -1,0 +1,153 @@
+﻿<section class="screen logged-out" id="{{containerId}}">
+    {{> header}}
+
+    <h1>{{dictionary.Profile_Create_Title}}</h1>
+    <form id="profileForm" class="form-profile m-after-default">
+
+        
+        
+    <p class="dark center">{{dictionary.Profile_Create_Text}}</p>
+        
+    <div id="validationError" class="control-group error" style="display: none;">
+        {{dictionary.Profile_ValidationErrors}}
+    </div>
+        <fieldset>
+
+                    <legend>{{data.associationData.studentIdTitle}}</legend>
+                    <p class="subText m-before legend-margin">{{data.associationData.studentIdText}}</p>
+                    <div class="control-group">
+                        <label class="control-label" for="studentId">{{data.associationData.studentIdLabel}}</label>
+                        <input type="text" class="required" id="studentId" name="studentId" value="{{profile.studentId}}" placeholder="{{data.associationData.studentIdPlaceHolder}}" title="{{data.associationData.studentIdRequired}}" />
+                    </div>
+
+        </fieldset>
+        <fieldset>
+            <legend>{{dictionary.Profile_Identification_Title}}</legend>
+            <p class="subText m-before legend-margin">{{dictionary.Profile_Name}}</p>
+            <div class="control-group">
+                <label class="control-label" for="firstname">{{dictionary.Profile_FirstName_Label}}</label>
+                <input type="text" class="required" id="firstname" name="firstname" value="{{profile.firstName}}" placeholder="{{dictionary.Profile_FirstName_PlaceHolder}}" title="{{dictionary.Profile_FirstName_Required}}" />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="lastname">{{dictionary.Profile_LastName_Label}}</label>
+                <input type="text" class="required" id="lastname" name="lastname" value="{{profile.lastName}}" placeholder="{{dictionary.Profile_LastName_PlaceHolder}}" title="{{dictionary.Profile_LastName_Required}}" />
+            </div>
+            <p class="">{{dictionary.Profile_Name_Text}}</p>
+        </fieldset>
+            
+        <fieldset>
+            <p class="subText">{{dictionary.Profile_Gender_Title}}</p>
+            <select id="gender" name="gender" class="required">
+                <option value="">{{dictionary.Profile_EmptyGender}}</option>
+                <option value="Male">{{dictionary.Profile_Gender_Male}}</option>
+                <option value="Female">{{dictionary.Profile_Gender_Female}}</option>
+            </select>
+        </fieldset>
+
+        <fieldset>
+            <p class="subText">{{dictionary.Profile_DateOfBirth_LabelText}}</p>
+            <div class="control-group birth-date">
+                <label class="control-label" for="birthdate">{{dictionary.Profile_DateOfBirth_Label}}</label>
+                <input type="date" class="required" id="birthdate" name="birthdate" value="{{profile.dateOfBirth}}" placeholder="{{dictionary.Profile_DateOfBirth_PlaceHolder}}" title="{{dictionary.Profile_DateOfBirth_Required}}" />
+            </div>
+            <p class="">{{dictionary.Profile_Brithdate_Text}}</p>
+        </fieldset>
+
+        <fieldset>
+            <p class="subText">{{dictionary.Profile_Email_Title}}</p>
+            <div class="control-group">
+                <label class="control-label" for="email">{{dictionary.Profile_Email_Label}}</label>
+                <input type="email" class="required" id="email" name="email" value="{{profile.email}}" placeholder="{{dictionary.Profile_Email_PlaceHolder}}" title="{{dictionary.Profile_Email_Required}}" />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="confirmEmail">{{dictionary.Profile_ConfirmEmail_Label}}</label>
+                <input type="email" id="confirmEmail" name="confirmEmail" value="{{profile.confirmEmail}}" placeholder="{{dictionary.Profile_ConfirmEmail_PlaceHolder}}" title="{{dictionary.Profile_ConfirmEmail_Validate}}" />
+            </div>
+            <p class="">{{dictionary.Profile_Email_Text}}</p>
+        </fieldset>
+        <fieldset>
+            <legend>{{dictionary.Profile_SecurePassword_Title}}</legend>
+            <p class="subText m-before legend-margin">{{dictionary.Profile_Password_Title}}</p>
+            <div class="control-group">
+                <label class="control-label" for="password">{{dictionary.Profile_Password_Label}}</label>
+                <input type="password" id="password" name="password" class="required" value="{{profile.password}}" placeholder="{{dictionary.Profile_Password_Placeholder}}" title="{{dictionary.Profile_Password_Required}}" />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="confirmPassword">{{dictionary.Profile_ConfirmPassword_Label}}</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" value="{{profile.confirmPassword}}" placeholder="{{dictionary.Profile_ConfirmPassword_Placeholder}}" title="{{dictionary.Profile_ConfirmPassword_Validation}}" />
+            </div>
+            <p class="">{{dictionary.Profile_Password_Text}}</p>
+            </fieldset>
+            <fieldset>   
+            <p class="subText">{{dictionary.Profile_LogoutOptions_Label}}</p>
+                
+            <div class="radio-group">
+                    
+                <label><input type="radio" id="logoutOption-yes" name="logoutOption" value="true"/>{{dictionary.Common_Yes}}.
+                    {{dictionary.Profile_LogoutOption_Yes}}</label>
+            </div>
+            <div class="radio-group">
+                    
+                <label><input type="radio" id="logoutOption-no" name="logoutOption" value="false" checked="checked" />{{dictionary.Common_No}}.
+                    {{dictionary.Profile_LogoutOption_No}}</label>
+            </div>
+                
+        </fieldset>
+            
+        <fieldset>
+            <legend>{{dictionary.Profile_Terms_Title}}</legend>
+                <div class="radio-group legend-margin">
+                        
+                    <label for="createProfileAgree" class="special-color transparent" style="font-weight:bold"><input type="checkbox" id="createProfileAgree" class="required" name="createProfileAgree" value="agree" title="{{dictionary.Profile_Terms_Required}}"/>
+                        {{dictionary.Profile_Terms_Agree}}
+                        <a onclick="showOverlay('Overlay-Terms', '{{containerId}}'); return false;">{{dictionary.Profile_Terms_License}}</a>
+                        {{dictionary.Profile_Terms_And}}
+                        <a onclick="showOverlay('Overlay-Privacy', '{{containerId}}'); return false;">{{dictionary.Profile_Terms_Privacy}}</a>
+                    </label>
+                </div> 
+            
+
+        </fieldset>
+            <div class="controls">
+                <button type="submit" class="btn primary full-width">
+                    <span>{{dictionary.Profile_Submit}}</span>
+                </button>
+                <a href="#" class="btn secondary" onclick="window.app.screens.createProfile.cancel();">{{dictionary.Profile_Cancel}}
+                </a>
+            </div>
+    </form>
+        
+    {{> footer}}
+</section>
+    
+<div id="Overlay-Terms" class="overlay" style="display:none;">
+    <section class="screen logged-out">
+        <header class="header">
+            <nav>
+                <a class="btn-nav btn" onclick="hideOverlay('Overlay-Terms', '{{containerId}}'); return false;" id="headerPreviousPlaceHolder">{{dictionary.Common_Back}}</a>
+            </nav>
+            <div class="banner">
+                <img alt="" src="data:image/jpeg;base64,{{appData.headerLogo.presentation}}" />
+            </div>  
+        </header>
+        <div class="main">
+        {{{appData.terms}}}
+        </div>
+    </section>
+</div>
+    
+<div id="Overlay-Privacy" class="overlay" style="display:none;">
+    <section class="screen logged-out">
+        <header class="header">
+            <nav>
+                <a class="btn-nav btn" onclick="hideOverlay('Overlay-Privacy', '{{containerId}}'); return false;" id="headerPreviousPlaceHolder">{{dictionary.Common_Back}}</a>
+            </nav>
+            <div class="banner">
+                <img alt="" src="data:image/jpeg;base64,{{appData.headerLogo.presentation}}" />
+            </div>  
+        </header>
+        <div class="main">
+        {{{appData.privacy}}}
+        </div>
+    </section>
+</div>

@@ -1,0 +1,11 @@
+﻿<section class="screen" id="{{containerId}}">
+    {{> header}}
+
+    <h1>{{dictionary.Settings_Title}}</h1>
+            
+    <button type="button" class="btn" onclick="app.screens.settings.editProfile()">{{dictionary.Settings_EditProfile}}</button>
+    <button type="button" class="btn" onclick="app.screens.settings.editDependents()">{{dictionary.Settings_EditDependentProfiles}}</button>
+    <button type="button" class="btn" onclick="app.screens.settings.claimsHistory()">{{dictionary.Settings_ClaimHistory}}</button>
+            
+    {{> footer}}
+</section>

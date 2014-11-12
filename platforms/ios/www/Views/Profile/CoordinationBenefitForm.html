@@ -1,0 +1,167 @@
+﻿<section class="screen" id="{{containerId}}">
+    {{> header}}
+
+    <h1>{{dictionary.CoordinationBenefit_Form_Title}}</h1>
+        
+    <p class="dark center m-after">{{dictionary.CoordinationBenefit_Form_Text1}}</p>
+    <p class="subText center">{{dictionary.CoordinationBenefit_Form_Text2}}</p>
+
+    <div id="validationError" class="control-group error" style="display: none;">
+        {{dictionary.Profile_ValidationErrors}}
+    </div>
+
+    <form id="beneficiaryForm" class="form-profile m-after">
+        <input type="hidden" name="id" value="{{model.id}}" />
+        <fieldset>
+            <legend>{{dictionary.CoordinationBenefit_Person_Title}}</legend> 
+            <p class="subText legend-margin">{{dictionary.CoordinationBenefit_IsStudentPlanOwner_Title}}</p>
+            <div class="radio-group half-width">
+                <div class="controls">
+                    <label for="isStudentPlanOwnerYes" class="white">
+                        <input type="radio" name="isStudentPlanOwner" id="isStudentPlanOwnerYes" value="true" title="{{dictionary.CoordinationBenefit_IsStudentPlanOwner_Required}}" />
+                        {{dictionary.CoordinationBenefit_IsStudentPlanOwner_Yes}}
+                    </label>
+                </div>
+                <div class="controls">
+                    <label for="isStudentPlanOwnerNo" class="white">
+                        <input type="radio" name="isStudentPlanOwner" id="isStudentPlanOwnerNo" value="false" title="{{dictionary.CoordinationBenefit_IsStudentPlanOwner_Required}}" />
+                        {{dictionary.CoordinationBenefit_IsStudentPlanOwner_No}}
+                    </label>
+                </div>
+            </div>
+
+            <div id="otherOwnsThePlan">
+                <div class="control-group legend-margin">
+                    <label class="control-label" for="firstName">{{dictionary.CoordinationBenefit_FirstName_Label}}</label>
+                    <input type="text" id="firstName" name="firstName" value="{{model.firstName}}" title="{{dictionary.CoordinationBenefit_FirstName_Required}}" placeholder="{{dictionary.CoordinationBenefit_FirstName_PlaceHolder}}" />
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="lastName">{{dictionary.CoordinationBenefit_LastName_Label}}</label>
+                    <input type="text" id="lastName" name="lastName" value="{{model.lastName}}" title="{{dictionary.CoordinationBenefit_LastName_Required}}" placeholder="{{dictionary.CoordinationBenefit_LastName_PlaceHolder}}" />
+                </div>
+
+                <p class="subText">{{dictionary.CoordinationBenefit_Gender_Label}}</p>
+                <select id="gender" name="gender" title="{{dictionary.CoordinationBenefit_Gender_Required}}">
+                    <option value="">{{dictionary.Profile_Gender_Select}}</option>
+                    <option value="male">{{dictionary.CoordinationBenefit_Gender_Male}}</option>
+                    <option value="female">{{dictionary.CoordinationBenefit_Gender_Female}}</option>
+                </select>
+
+                <p class="subText">{{dictionary.CoordinationBenefit_BirthDate_LabelText}}</p>
+                <div class="control-group birth-date">
+                    <label class="control-label" for="dateOfBirth">{{dictionary.CoordinationBenefit_BirthDate_Label}}</label>
+                    <input type="date" id="dateOfBirth" name="dateOfBirth" value="{{model.dateOfBirth}}" class="dateISO" title="{{dictionary.CoordinationBenefit_BirthDate_Required}}" placeholder="{{dictionary.CoordinationBenefit_BirthDate_PlaceHolder}}" />
+                </div>
+
+            </div>
+        </fieldset>
+            
+        <fieldset>
+            <legend>{{dictionary.CoordinationBenefit_OtherCoverage}}</legend>
+            <p class="subText legend-margin">{{dictionary.CoordinationBenefit_IsDFS_Label}}</p>
+            <div class="full-width">
+                <div class="radio-group controls">
+                    <label for="isSelfYes" class="white">
+                        <input type="radio" name="isDFS" id="isSelfYes" value="true" title="{{dictionary.CoordinationBenefit_IsDFS_Required}}" />
+                        {{assocData.insurer.coordinationCurrentLabel}}
+                    </label>
+                </div>
+                <div class="radio-group controls">
+                    <label for="isSelfNo" class="white">
+                        <input type="radio" name="isDFS" id="isSelfNo" value="false" title="{{dictionary.CoordinationBenefit_IsDFS_Required}}" />
+                        {{dictionary.CoordinationBenefit_IsDFS_No}}
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+            
+        <fieldset id="OtherInsurer_Fields">
+            <legend>{{dictionary.CoordinationBenefit_OtherInsurer_Title}}</legend>
+
+            <p class="subText legend-margin">{{dictionary.CoordinationBenefit_OtherInsurerName_Text}}</p>
+            <div class="control-group">
+                <label class="control-label rounded-corner-bottom-left" for="otherInsurerName">{{dictionary.CoordinationBenefit_OtherInsurerName_Label}}</label>
+                <input type="text" id="otherInsurerName" name="otherInsurerName" class="rounded-corner-bottom-right" value="{{model.otherInsurerName}}" title="{{dictionary.CoordinationBenefit_OtherInsurerName_Required}}" placeholder="{{dictionary.CoordinationBenefit_OtherInsurerName_PlaceHolder}}" />
+            </div>
+            <br />
+
+            <!-- Contract Number -->
+            <div class="control-group" id="OtherContractNumberField">
+                <label class="control-label" for="otherContractNumber">{{dictionary.CoordinationBenefit_OtherContractNumber_Label}}</label>
+                <input type="text" id="otherContractNumber" name="otherContractNumber" value="{{model.otherContractNumber}}" title="{{dictionary.CoordinationBenefit_OtherContractNumber_Required}}" placeholder="{{dictionary.CoordinationBenefit_OtherContractNumber_PlaceHolder}}" />
+            </div>
+
+            <!-- Employer Name -->            
+            <div class="control-group" id="OtherEmployerNameField">
+                <label class="control-label" for="otherEmployerName">{{dictionary.CoordinationBenefit_OtherEmployerName_Label}}</label>
+                <input type="text" id="otherEmployerName" name="otherEmployerName" value="{{model.otherEmployerName}}" title="{{dictionary.CoordinationBenefit_OtherEmployerName_Required}}" placeholder="{{dictionary.CoordinationBenefit_OtherEmployerName_PlaceHolder}}" />
+            </div>
+
+            <div id="InsurerOtherCoveragePeriodFields">
+                <p class="subText">{{dictionary.CoordinationBenefit_OtherInsurerCoverage_Label}}</p>
+                <ul>
+                    <li>
+                        <div class="group-wrapper calendar">
+                            <div class="select-group">     
+                                <p class="control-label" for="otherInsurerCoverageFrom">{{dictionary.CoordinationBenefit_OtherInsurerCoverageFrom_Label}}</p>
+                                <div class="controls">
+                                    <input class="calendar" type="date" id="otherInsurerCoverageFrom" name="otherInsurerCoverageFrom" value="{{model.otherInsurerCoverageFrom}}" title="{{dictionary.CoordinationBenefit_OtherInsurerCoverageFrom_Required}}" placeholder="{{dictionary.CoordinationBenefit_OtherInsurerCoverageFrom_PlaceHolder}}" />
+                                </div>
+
+                                <p class="control-label rounded-corner-bottom-left" for="otherInsurerCoverageTo">{{dictionary.CoordinationBenefit_OtherInsurerCoverageTo_Label}}</p>
+                                <div class="controls">
+                                    <input class="calendar" type="date" id="otherInsurerCoverageTo" name="otherInsurerCoverageTo" value="{{model.otherInsurerCoverageTo}}" title="{{dictionary.CoordinationBenefit_OtherInsurerCoverageTo_Required}}" placeholder="{{dictionary.CoordinationBenefit_OtherInsurerCoverageTo_PlaceHolder}}" />
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div id="InsurerOtherTypeField">
+                <p class="subText legend-margin">{{dictionary.CoordinationBenefit_OtherInsurerCoverageTypeBenefit_Label}}</p>
+                
+                <input type="hidden" class="required" name="commonValidation" />
+                <ul>
+                    <li>
+                        <div class="group-wrapper vertical">
+                            {{#each appData.coordinationBenefitTypes}}
+                            <div class="control-radio-select">
+                                    <label for="otherInsurerCoverageTypeBenefit{{id}}">
+                                        <input type="checkbox" name="otherInsurerCoverageTypeBenefit" id="otherInsurerCoverageTypeBenefit{{id}}" value="{{id}}" data-referenceInputId="otherInsurerCoverageTypeCoverage{{id}}" />
+                                        <span>{{name}}</span>
+                                    </label>
+                                    <select name="otherInsurerCoverageTypeCoverage" id="otherInsurerCoverageTypeCoverage{{id}}" data-referenceInputId="otherInsurerCoverageTypeBenefit{{id}}">
+                                        <option value="">{{../dictionary.CoordinationBenefit_OtherInsurerCoverageTypeCoverage_Label}}</option>
+                                        {{#each ../appData.coverageTypes}}
+                                            <option value="{{id}}">{{name}}</option>
+                                        {{/each}}
+                                    </select>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </fieldset>
+            
+        <fieldset id="InsurerSelf_Fields" class="m-after">
+            <legend>{{assocData.insurer.coordinationCurrentLabel}}</legend>
+
+            <p class="subText legend-margin">{{dictionary.CoordinationBenefit_DFSFields_Text}}</p>
+            <div class="control-group" id="SelfContractNumberField">
+                <label class="control-label" for="DFSContractNumber">{{dictionary.CoordinationBenefit_DFSContractNumber_Label}}</label>
+                <input type="text" id="DFSContractNumber" name="DFSContractNumber" value="{{model.dfsContractNumber}}" title="{{dictionary.CoordinationBenefit_DFSContractNumber_Required}}" placeholder="{{dictionary.CoordinationBenefit_DFSContractNumber_PlaceHolder}}" />
+            </div>
+            <div class="control-group" id="SelfCertificateNumberField">
+                <label class="control-label" for="DFSCertificateNumber">{{dictionary.CoordinationBenefit_DFSCertificateNumber_Label}}</label>
+                <input type="text" id="DFSCertificateNumber" name="DFSCertificateNumber" value="{{model.dfsCertificateNumber}}" title="{{dictionary.CoordinationBenefit_DFSCertificateNumber_Required}}" placeholder="{{dictionary.CoordinationBenefit_DFSCertificateNumber_PlaceHolder}}" />
+            </div>
+        </fieldset>
+
+        <button type="submit" class="btn primary full-width"><span>{{dictionary.CoordinationBenefit_Submit}}</span></button>
+        <a href="#" class="btn secondary" onClick="window.app.screens.coordinationBenefitForm.cancel();">{{dictionary.CoordinationBenefit_Cancel}}</a>
+    </form>
+
+    {{> footer}}
+</section>

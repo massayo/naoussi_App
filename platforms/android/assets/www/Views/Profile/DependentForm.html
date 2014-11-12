@@ -1,0 +1,190 @@
+﻿<section class="screen" id="{{containerId}}">
+    {{> header}}
+
+    <h1>{{dictionary.Dependent_Form_Title}}</h1>
+        
+    <p class="dark center half-m-after">{{dictionary.Dependent_Form_Text1}}</p>
+    <p class="subText center">{{dictionary.Dependent_Form_Text2}}</p>
+
+    <form id="dependentForm" class="form-profile  m-after-default">
+        <div id="validationError" class="control-group error" style="display: none;">
+            {{dictionary.Profile_ValidationErrors}}
+        </div>
+        <input type="hidden" name="id" value="{{model.id}}" />
+        <fieldset>
+            <legend>{{dictionary.Dependent_Form_Information_Title}}</legend>
+            <p class="subText legend-margin">{{dictionary.Dependent_Form_Name_Label}}</p>
+            <div class="control-group">
+                <label class="control-label" for="dependentForm_FirstName">{{dictionary.Dependent_Form_FirstName_Label}}</label>
+                <input type="text" id="dependentForm_FirstName" name="firstName" value="{{model.firstName}}" class="required"
+                            title="{{dictionary.Dependent_Form_FirstName_Required}}" placeholder="{{dictionary.Dependent_Form_FirstName_PlaceHolder}}" />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="dependentForm_LastName">{{dictionary.Dependent_Form_LastName_Label}}</label>
+                <input type="text" id="dependentForm_LastName" name="lastName" value="{{model.lastName}}" class="required"
+                            title="{{dictionary.Dependent_Form_LastName_Required}}" placeholder="{{dictionary.Dependent_Form_LastName_PlaceHolder}}" />
+            </div>
+        </fieldset>
+        <fieldset id="dependentForm_Gender">
+            <p class="subText">{{dictionary.Dependent_Form_Gender_Label}}</p>
+            <select id="gender" class="required" name="gender" title="{{dictionary.Dependent_Form_Gender_Required}}">
+                <option value="">{{dictionary.Profile_Gender_Select}}</option>
+                <option value="male">{{dictionary.Dependent_Form_Gender_Male}}</option>
+                <option value="female">{{dictionary.Dependent_Form_Gender_Female}}</option>
+            </select>
+        </fieldset>
+        <fieldset>
+            <p class="subText">{{dictionary.Dependent_Form_Relationship_Label}}</p>
+            <select id="dependentForm_Relationship" class="required" name="relationshipNavId" title="{{dictionary.Dependent_Form_Relationship_Required}}">
+                <option value="">{{dictionary.Profile_Relationship_Select}}</option>
+            {{#each appData.relationships}}
+                <option value="{{navId}}">{{value}}</option>
+            {{/each}}
+            </select>
+        </fieldset>
+            
+        <fieldset>
+            <p class="subText">{{dictionary.Dependent_Form_BirthDate_LabelText}}</p>
+            <div class="control-group birth-date">
+                <label class="control-label" for="dependentForm_BirthDate">{{dictionary.Dependent_Form_BirthDate_Label}}</label>
+                <input type="date" id="dependentForm_BirthDate" name="dateOfBirth" value="{{model.dateOfBirth}}" class="required"
+                            title="{{dictionary.Dependent_Form_BirthDate_Required}}" placeholder="{{dictionary.Dependent_Form_BirthDate_PlaceHolder}}" />
+            </div>
+        </fieldset>
+
+        <div id="dependentForm_Child18Questions">
+            <fieldset id="dependentForm_isChildMarried">
+                <p class="subText">{{dictionary.Dependent_Form_Child_Married}}</p>
+                <div class="radio-group half-width">
+                    <div class="controls">
+                        <label class="radio" for="yesChildMarried"><input type="radio" name="isChildMarried" id="yesChildMarried" value="true" />{{dictionary.Common_Yes}}</label>
+                    </div>
+                    <div class="controls">
+                        <label class="radio" for="noChildMarried"><input type="radio" name="isChildMarried" id="noChildMarried" value="false" checked="checked" />{{dictionary.Common_No}}</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset id="dependentForm_childMarriedDate">
+                <div class="date-group" id="childMarriedDateGroup">
+                    <div class="control-group">
+                    <label for="childMarriedDate">{{dictionary.Dependent_Form_Child_Married_Date}}</label>
+                    <input name="childMarriedDate" id="childMarriedDate" value="{{model.childMarriedDate}}" type="date" class="calendar" />    
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset id="dependentForm_isChildEmployed">
+                <p class="subText">{{dictionary.Dependent_Form_Child_Employed}}</p>
+                <div class="radio-group half-width">
+                    <div class="controls">
+                        <label class="radio" for="yesChildEmployed"><input type="radio" name="isChildEmployed" id="yesChildEmployed" value="true" />{{dictionary.Common_Yes}}</label>
+                    </div>
+                    <div class="controls">
+                        <label class="radio" for="noChildEmployed"><input type="radio" name="isChildEmployed" id="noChildEmployed" value="false" checked="checked" />{{dictionary.Common_No}}</label>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset id="dependentForm_childEmployedDate">
+                <div class="date-group" id="childEmployedDateGroup">
+                    <div class="control-group">
+                    <label for="childEmployedDate">{{dictionary.Dependent_Form_Child_Employed_Date}}</label>
+                    <input name="childEmployedDate" id="childEmployedDate" value="{{model.childEmployedDate}}" type="date" class="calendar" />    
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <fieldset id="dependentForm_FullTimeStudent">
+                <p class="subText">{{dictionary.Dependent_Form_FullTimeStudent_Label}}</p>
+                <div class="radio-group half-width">
+                    <div class="controls">
+                        <label class="radio" for="yesFullTimeStudent"><input type="radio" name="isFullTimeStudent" id="yesFullTimeStudent" value="true" title="{{dictionary.Common_Required}}" />{{dictionary.Common_Yes}}</label>
+                    </div>
+                    <div class="controls">
+                        <label class="radio" for="noFullTimeStudent"><input type="radio" name="isFullTimeStudent" id="noFullTimeStudent" value="false" checked="checked" />{{dictionary.Common_No}}</label>
+                    </div>
+                </div>
+        </fieldset>
+        <fieldset id="dependentForm_FullTimeStudentDates">
+            <div class="control-group">
+                    <label class="control-label" for="dependentForm_StudentSchool">{{dictionary.Dependent_Form_FullTimeStudentSchool_Label}}</label>
+                    <input type="text" id="dependentForm_StudentSchool" name="fullTimeStudentSchool" value="{{model.fullTimeStudentSchool}}" class=""
+                                title="{{dictionary.Dependent_Form_FullTimeStudentSchool_Required}}" placeholder="{{dictionary.Dependent_Form_FullTimeStudentSchool_PlaceHolder}}" />
+                </div>
+            <ul class=" m-before">
+                <li>
+                    <div class="group-wrapper calendar">
+                    
+                        <div class="select-group">
+                            <p class="control-label" for="dependentForm_FullTimeStudentFrom">{{dictionary.Common_From}}</p>
+                            <div class="controls">
+                                <input class="calendar" type="date" id="dependentForm_FullTimeStudentFrom" name="fullTimeStudentFrom" value="{{model.fullTimeStudentFrom}}"
+                                        title="{{dictionary.Dependent_Form_FullTimeStudentFrom_Required}}" placeholder="{{dictionary.Dependent_Form_FullTimeStudentFrom_PlaceHolder}}" />
+                            </div>
+                            <p for="dependentForm_FullTimeStudentTo">{{dictionary.Common_To}}</p>
+                            <div class="controls">
+                                <input type="date" class="calendar" id="dependentForm_FullTimeStudentTo" name="fullTimeStudentTo" value="{{model.fullTimeStudentTo}}"
+                                        title="{{dictionary.Dependent_Form_FullTimeStudentTo_Required}}" placeholder="{{dictionary.Dependent_Form_FullTimeStudentTo_PlaceHolder}}" />
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </fieldset>
+        <fieldset id="dependentForm_FunctionalImpairment">
+            <p class="subText">{{dictionary.Dependent_Form_FunctionalImpairment_Label}}</p>
+            <div class="radio-group half-width">
+                <div class="controls">
+                    <label class="radio" for="yesFunctionalImpairment"><input type="radio" name="hasFunctionalImpairment" id="yesFunctionalImpairment" value="true" title="{{dictionary.Common_Required}}" />{{dictionary.Common_Yes}}</label>
+                </div>
+                <div class="controls">
+                    <label class="radio" for="noFunctionalImpairment"><input type="radio" name="hasFunctionalImpairment" id="noFunctionalImpairment" value="false" checked="checked" />{{dictionary.Common_No}}</label>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset  id="dependentForm_FunctionalImpairmentType">
+            <p class="subText">{{dictionary.Dependent_Form_FunctionalImpairmentType_Label}}</p>
+            <div class="group-wrapper">
+                <div class="radio-group half-width">
+                    <div class="controls">
+                        <label class="radio" for="yesFunctionalImpairmentPermanent"><input type="radio" name="isFunctionalImpairmentPermanent" id="yesFunctionalImpairmentPermanent" value="true" />{{dictionary.Dependent_Form_FunctionalImpairmentType_Permanent}}</label>
+                    </div>
+                    <div class="controls">
+                        <label class="radio" for="noFunctionalImpairmentPermanent"><input type="radio" name="isFunctionalImpairmentPermanent" id="noFunctionalImpairmentPermanent" value="false" />{{dictionary.Dependent_Form_FunctionalImpairmentType_Temporary}}</label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <fieldset id="dependentForm_FunctionalImpairmentDates">
+            <ul>
+                <li>
+                    <div class="group-wrapper calendar">
+                        <div class="select-group">
+                            <p class="control-label" for="dependentForm_FunctionalImpairmentFrom">{{dictionary.Common_From}}</p>
+                            <div class="controls">
+                                <input type="date" class="calendar" id="dependentForm_FunctionalImpairmentFrom" name="functionalImpairmentFrom" value="{{model.functionalImpairmentFrom}}"
+                                title="{{dictionary.Dependent_Form_FunctionalImpairmentFrom_Required}}" placeholder="{{dictionary.Dependent_Form_FunctionalImpairmentFrom_PlaceHolder}}" />
+                            </div>
+                            <p class="control-label" for="dependentForm_FunctionalImpairmentTo">{{dictionary.Common_To_Optional}}</p>
+                            <div class="controls">
+                                <input type="date" class="calendar" id="dependentForm_FunctionalImpairmentTo" name="functionalImpairmentTo" value="{{model.functionalImpairmentTo}}"
+                                placeholder="{{dictionary.Dependent_Form_FunctionalImpairmentTo_PlaceHolder}}" />
+                            </div>
+                        </div>
+                    </div> 
+                </li>
+            </ul>               
+        </fieldset>
+        <fieldset id="dependentForm_FunctionalImpairment_Info">
+            <p class="subText center">{{dictionary.Dependent_Form_FunctionalImpairment_Text}}</p>
+        </fieldset>
+        <button type="submit" class="btn primary full-width" style="margin-top: 32px;"><span>
+        {{#if model}} {{dictionary.Dependent_Form_Submit_Update}}
+        {{else}} {{dictionary.Dependent_Form_Submit_Add}} {{/if}}</span></button>
+        <a href="#" class="btn secondary" onClick="window.app.screens.dependentForm.cancel();"><span>{{dictionary.Dependent_Form_Cancel}}</span></a>
+    </form>
+
+    {{> footer}}
+</section>

@@ -1,0 +1,113 @@
+﻿<section class="screen" id="{{containerId}}">
+    {{> header}}
+
+    <h1>{{dictionary.Profile_ContactInfo}}</h1>
+        
+    <p class="dark center">{{dictionary.Profile_ContactInfo_TitleText}}</p>
+        
+    <p class="subText center">{{dictionary.Profile_ContactInfo_Text}}</p>
+    
+        <form id="profileForm" class="form-profile">
+            <div id="validationError" class="control-group error" style="display: none;">
+            {{dictionary.Profile_ValidationErrors}}
+        </div>
+        <input type="hidden" name="id" value="{{profile.id}}" />
+        <fieldset>
+            <legend>{{dictionary.Profile_Address}}</legend>
+
+            <p class="subText legend-margin">{{dictionary.Profile_Address_Legend}}</p>
+            <div class="control-group">
+                <label class="control-label" for="address1">{{dictionary.Profile_Address_Label}}</label>
+                <input type="text" class="required" id="address1" name="address1" value="{{profile.address1}}" placeholder="{{dictionary.Profile_Address_PlaceHolder}}" title="{{dictionary.Profile_Address_Required}}" />
+            </div>
+        </fieldset>
+        <fieldset>   
+                <p class="subText">{{dictionary.Profile_Address2_Legend}}</p>
+            <div class="control-group">
+                <label class="control-label" for="address2">{{dictionary.Profile_Address2_Label}}</label>
+                <input type="text" id="address2" name="address2" value="{{profile.address2}}" placeholder="{{dictionary.Profile_Address2_PlaceHolder}}" />
+            </div>
+        </fieldset>
+        <fieldset> 
+                <p class="subText">{{dictionary.Profile_City_Legend}}</p>
+            <div class="control-group">
+                <label class="control-label" for="city">{{dictionary.Profile_City_Label}}</label>
+                <input type="text" class="required" id="city" name="city" value="{{profile.city}}" placeholder="{{dictionary.Profile_City_PlaceHolder}}" title="{{dictionary.Profile_City_Required}}" />
+            </div>
+        </fieldset>
+        <fieldset> 
+            <p class="subText">{{dictionary.Profile_Province_Legend}}</p>
+            <select id="province" name="province" class="required" title="{{dictionary.Profile_Province_Required}}">
+            <option value="">{{dictionary.Profile_Province_Label}}</option>
+                {{#each data.provinces}}
+                    <option value="{{id}}">{{name}}</option>
+                {{/each}}
+            </select>
+        </fieldset>
+        <fieldset> 
+            <p class="subText">{{dictionary.Profile_PostalCode_Legend}}</p>
+            <div class="control-group">
+                <label class="control-label" for="postalCode">{{dictionary.Profile_PostalCode_Label}}</label>
+                <input type="text" id="postalCode" name="postalCode" class="required" value="{{profile.postalCode}}" placeholder="{{dictionary.Profile_PostalCode_PlaceHolder}}" title="{{dictionary.Profile_PostalCode_Required}}" />
+            </div>
+        </fieldset>
+
+        <fieldset class="half-m-after"> 
+            <legend>{{dictionary.Profile_Phone}}</legend>
+
+            <p class="subText legend-margin">{{dictionary.Profile_Phone1_Legend}}</p>
+            <div class="control-group">
+                <label class="control-label" for="phone1">{{dictionary.Profile_Phone1_Label}}</label>
+                <input type="text" class="required" id="phone1" name="phone1" value="{{profile.phone1}}" placeholder="{{dictionary.Profile_Phone1_PlaceHolder}}" title="{{dictionary.Profile_Phone1_Required}}" />
+            </div>
+        </fieldset>
+        <fieldset> 
+            <div class="check-group transparent">
+                <label for="isPhone1Mobile" class="white"><input type="checkbox" id="isPhone1Mobile" name="phone1IsMobile" value="true">{{dictionary.Profile_Phone_Is_Mobile_Label}}</label>
+            </div>
+        </fieldset>
+        <fieldset class="half-m-after"> 
+            <p class="subText">{{dictionary.Profile_Phone2_Legend}}</p>
+            <div class="control-group">
+                <label class="control-label" for="phone2">{{dictionary.Profile_Phone2_Label}}</label>
+                <input type="text" id="phone2" name="phone2" value="{{profile.phone2}}" placeholder="{{dictionary.Profile_Phone2_PlaceHolder}}" />
+            </div>
+        </fieldset>
+        <fieldset> 
+            <div class="check-group transparent">
+                    
+                <label for="isPhone2Mobile" class="white"><input type="checkbox" id="isPhone2Mobile" name="phone2IsMobile" value="true">{{dictionary.Profile_Phone_Is_Mobile_Label}}</label>
+            </div>
+        </fieldset>
+
+        <fieldset id="mobile-preferences-section" style="display: none;">
+            <legend>{{dictionary.Profile_Mobile_Preferences}}</legend>
+                
+            <p class="subText legend-margin">{{dictionary.Profile_Mobile_Receive_Message}}</p>
+            <div class="radio-group half-width">
+                <div class="controls">
+                    <label for="receiveMsgOnMobileYes"  class="white"><input type="radio" id="receiveMsgOnMobileYes" name="receiveMsgOnMobile" value="true">
+                    {{dictionary.Common_Yes}}</label>
+                </div>
+                <div class="controls">
+                    <label for="receiveMsgOnMobileNo"  class="white"><input type="radio" id="receiveMsgOnMobileNo" name="receiveMsgOnMobile" value="false" checked="checked">
+                    {{dictionary.Common_No}}</label>
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-actions">
+            <button type="submit" class="btn primary half-width m-left">
+                <span>
+                    {{#if profile.completed}}
+                        {{dictionary.Profile_Save}}
+                    {{else}}
+                        {{dictionary.Profile_SaveContinue}}
+                    {{/if}}
+                </span>
+            </button>
+            <a href="#" class="btn secondary half-width" onclick="window.app.screens.contactInformation.cancel();">{{dictionary.Profile_Cancel}}</a>
+        </div>
+    </form>
+
+    {{> footer}}
+</section>

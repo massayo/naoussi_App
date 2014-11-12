@@ -1,0 +1,16 @@
+﻿<section class="screen" id="{{containerId}}">
+    {{> header}}
+
+    <h1>{{dictionary.More_Title}}</h1>
+
+    <ul class="flex highlight">
+        {{#each appData.staticPages}}
+        <li><a href="#" class="btn more-btn-view" data-navid="{{navId}}">{{title}}<span class="ico">></span></a></li>
+        {{/each}}
+        {{#each assocData.insurerStaticPages}}
+        <li><a href="#" class="btn more-btn-view" data-navid="{{navId}}">{{title}}<span class="ico">></span></a></li>
+        {{/each}}
+    </ul>
+
+    {{> footer}}
+</section>

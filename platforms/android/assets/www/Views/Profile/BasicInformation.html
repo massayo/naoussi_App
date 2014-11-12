@@ -1,0 +1,74 @@
+﻿<section class="screen" id="{{containerId}}">
+    {{> header}}
+
+    <h1>{{dictionary.Profile_BasicInformation_Title}}</h1>
+        
+    <p class="subText center">{{dictionary.Profile_BasicInformation_Text}}</p>
+    
+    <form id="profileForm" class="form-profile">
+        <input type="hidden" name="id" value="{{profile.id}}" />
+            
+        <fieldset>
+            <legend>{{data.associationData.studentIdTitle}}</legend>
+            <p class="subText legend-margin">{{data.associationData.studentIdText}}</p>
+            <div class="control-group">
+                <label class="control-label" for="studentId">{{data.associationData.studentIdLabel}}</label>
+                <input type="text" class="" id="studentId" name="studentId" value="{{profile.studentId}}" placeholder="{{data.associationData.studentIdPlaceHolder}}" title="{{data.associationData.studentIdRequired}}" />
+            </div>
+        </fieldset>
+            <fieldset>
+            <legend>{{dictionary.Profile_Identification_Title}}</legend>
+            <p class="subText legend-margin">{{dictionary.Profile_Name}}</p>
+            <div class="control-group">
+                <label class="control-label" for="firstname">{{dictionary.Profile_FirstName_Label}}</label>
+                <input type="text" class="required" id="firstname" name="firstname" value="{{profile.firstName}}" placeholder="{{dictionary.Profile_FirstName_PlaceHolder}}" title="{{dictionary.Profile_FirstName_Required}}" />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="lastname">{{dictionary.Profile_LastName_Label}}</label>
+                <input type="text" class="required" id="lastname" name="lastname" value="{{profile.lastName}}" placeholder="{{dictionary.Profile_LastName_PlaceHolder}}" title="{{dictionary.Profile_LastName_Required}}" />
+            </div>
+            <p>{{dictionary.Profile_Name_Text}}</p>
+        </fieldset>
+            
+        <fieldset>
+            <p class="subText">{{dictionary.Profile_Gender_Title}}</p>
+            <div class="control-group">
+                <select id="gender" name="gender" class="full-width required" title="{{dictionary.Profile_Gender_Required}}">
+                    <option value="">{{dictionary.Profile_EmptyGender}}</option>
+                    <option value="Male">{{dictionary.Profile_Gender_Male}}</option>
+                    <option value="Female">{{dictionary.Profile_Gender_Female}}</option>
+                </select>
+            </div>
+        </fieldset>
+            
+            
+        <fieldset>
+            <p class="subText">{{dictionary.Profile_DateOfBirth_LabelText}}</p>
+            <div class="control-group birth-date">
+                <label class="control-label" for="birthdate">{{dictionary.Profile_DateOfBirth_Label}}</label>
+                <input type="date" class="required" id="birthdate" name="birthdate" class="required" value="{{profile.dateOfBirth}}" placeholder="{{dictionary.Profile_DateOfBirth_PlaceHolder}}" title="{{dictionary.Profile_DateOfBirth_Required}}" />
+            </div>
+            <p>{{dictionary.Profile_Brithdate_Text}}</p>
+        </fieldset>
+
+        <fieldset>
+            <p class="subText">{{dictionary.Profile_Email_Title}}</p>
+            <div class="control-group">
+                <label class="control-label" for="email">{{dictionary.Profile_Email_Label}}</label>
+                <input type="email" class="required" id="email" name="email" value="{{profile.email}}" placeholder="{{dictionary.Profile_Email_PlaceHolder}}" title="{{dictionary.Profile_Email_Required}}" />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="confirmEmail">{{dictionary.Profile_ConfirmEmail_Label}}</label>
+                <input type="email" id="confirmEmail" name="confirmEmail" value="{{profile.email}}" placeholder="{{dictionary.Profile_ConfirmEmail_PlaceHolder}}" title="{{dictionary.Profile_ConfirmEmail_Validate}}" />
+            </div>
+            <p>{{dictionary.Profile_Email_Text}}</p>
+        </fieldset>
+            
+        <div class="form-actions">
+            <button type="submit" class="btn primary half-width"><span>{{dictionary.Profile_Submit}}</span></button>
+            <a href="#" class="btn secondary half-width m-right" onclick="window.app.screens.basicInformation.cancel();">{{dictionary.Profile_Cancel}}</a>
+        </div>
+    </form>
+
+    {{> footer}}
+</section>

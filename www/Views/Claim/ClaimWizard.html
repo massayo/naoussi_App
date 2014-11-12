@@ -1,0 +1,289 @@
+﻿<section class="screen" id="{{containerId}}">
+{{> header}}
+<div id="claimPersonSelectPage">
+    <h1>{{dictionary.Claim_SelectPerson_Title}}</h1>
+    <div class="flex">
+        <p class="center">{{dictionary.Claim_SelectPerson_Text}}</p>
+        <div id="claimPersonSelectPageError" class="control-group error" style="display: none;">{{dictionary.Claim_Wizard_Select_Someone}}</div>
+        <fieldset>
+        <div class="control-group" id="claimPersonList">
+            <ul class="simple-group">
+            <li>
+                <label for="personMe">{{dictionary.Claim_Me}}</label>
+                {{#if assocData.insurer.claimMultipleDependants }}
+                <input type="checkbox" id="personMe" name="personMe" value="0" checked="checked" />    
+                {{else}}
+                <input type="radio" id="personMe" name="person" value="0" checked="checked"  />    
+                {{/if}}
+            </li>
+            {{#each profile.dependents}}
+            <li class="no-margin no-rounded-corner">
+                <label  for="person{{id}}">{{firstName}} {{lastName}}</label>
+                {{#if ../assocData.insurer.claimMultipleDependants }}
+                <input type="checkbox" id="person{{id}}" name="person{{id}}" value="{{id}}" />    
+                {{else}}
+                <input type="radio" id="person{{id}}" name="person" value="{{id}}" />    
+                {{/if}}
+            </li>
+            {{/each}}
+            </ul>
+        </div>
+        </fieldset>
+    </div>           
+    <div class="form-actions">
+    <a href="#" class="btn secondary half-width m-right" onclick="window.app.screens.dependentList.show();"><span>{{dictionary.Claim_Change_Add_Dependants}}</span></a>
+    <a href="#" class="btn primary half-width" onclick="claimWizard.selectClaimPersons();"><span>{{dictionary.Claim_Next}}</span></a>
+    </div>
+</div>
+
+<!-- ***BEGIN*** acknowledge the direct deposit information *** -->
+<div id="claimAckDirectDepositPage" style="display: none;">
+    <h1>{{dictionary.Claim_AckDirectDeposit_Title}}</h1>
+
+    <fieldset>
+        <legend>{{dictionary.Claim_AckDirectDeposit_Question}}</legend>
+        <div class="control-group">
+            <ul class="simple-group">
+                <li><label for="ackDirectDepositYes">{{dictionary.Common_Yes}}</label> <input type="radio" name="ackDirectDeposit" id="ackDirectDepositYes" value="1" /></li>
+                <li><label for="ackDirectDepositNo">{{dictionary.Common_No}}</label> <input type="radio" name="ackDirectDeposit" id="ackDirectDepositNo" value="0" checked="checked" /></li>
+            </ul>
+        </div>
+    </fieldset>
+
+    <div id="resendDirectDepositMessageBtn" class="form-actions">
+        <a href="#" class="btn primary" onclick="claimWizard.resendDirectDepositMessage();"><span>{{dictionary.Claim_AckDirectDeposit_Resend}}</span></a>
+    </div>
+
+    <div class="form-actions">
+        <a href="#" class="btn primary" onclick="claimWizard.ackDirectDepositValidation();"><span>{{dictionary.Claim_Next}}</span></a>
+    </div>
+</div>
+<!-- ***END*** acknowledge the direct deposit information *** -->
+
+<div id="claimAddressConfirmationPage" style="display: none;">
+    <h1>{{dictionary.Claim_AddressConfirm_Title}}</h1>
+
+    <div class="control-group">
+        <ul class="simple-group">
+            <li style="padding: 12px;">
+                {{profile.address1}} {{profile.address2}} {{profile.city}} <br />
+                {{profile.provinceCode}} {{profile.postalCode}}
+            </li>
+        </ul>
+    </div>
+
+    <fieldset>
+        <legend>{{dictionary.Claim_AddressChanged}}</legend>
+        <div class="control-group">
+            <ul class="simple-group">
+                <li><label for="addressChangedTrue">{{dictionary.Common_Yes}}</label> <input type="radio" name="addressChanged" id="addressChangedTrue" value="1" /></li>
+                <li><label for="addressChangedFalse">{{dictionary.Common_No}}</label> <input type="radio" name="addressChanged" id="addressChangedFalse" value="0" checked="checked" /></li>
+            </ul>
+        </div>
+    </fieldset>
+
+    <div class="form-actions">
+        <a href="#" class="btn secondary half-width m-right" onclick="window.app.screens.contactInformation.show();"><span>{{dictionary.Claim_Change_Address}}</span></a>
+        <a href="#" class="btn primary" onclick="claimWizard.addressValidation();"><span>{{dictionary.Claim_Next}}</span></a>
+    </div>
+</div>
+
+<div id="claimTypeSelectionPage" style="display: none;">
+    <h1>{{dictionary.Claim_SelectType_Title}}</h1>
+    <fieldset class="flex">
+        <p class="center">{{dictionary.Claim_SelectType_Text}}</p>
+        <ul>
+        {{#each assocData.claimTypes}}
+        <li>
+            <a href="#" class="btn" type="button" data-claim-type="{{type}}" onclick="claimWizard.selectClaimType(this)">
+            <img class="ico" src="data:image/jpeg;base64,{{icon.thumbnail}}" />    
+            <span>{{name}}</span>
+            <span class="ico"><img class="ico" src="data:image/jpeg;base64,{{../uiData.whiteArrowIcon.thumbnail}}" /></span>
+            </a>
+        </li>
+        {{/each}}
+        </ul>
+    </fieldset>
+</div>
+
+<div id="claimConditionsPage" style="display: none;">
+    <h1>{{dictionary.Claim_SelectConditions_Title}}</h1>
+
+        <p class="center  no-text-shadow">{{dictionary.Claim_SelectConditions_Text}}</p>
+            
+        <div id="showConditionsRequired" style="display: none;" class="control-group error">
+            {{dictionary.Claim_ConditionsRequired}}
+        </div>
+
+        <div class="control-group">
+            <ul>
+            <li>
+                <label>{{dictionary.Claim_SelectConditions_WorkInjury}}</label>
+                <div class="controls">
+                <div class="input-group">
+                    <input type="radio" name="workInjury" id="workInjuryTrue" value="1" onclick="claimWizard.showAccidentDateGroup();" />    
+                    <label for="workInjuryTrue">{{dictionary.Common_Yes}}</label>
+                </div>
+                <div class="input-group">
+                    <input type="radio" name="workInjury" id="workInjuryFalse" value="0" onclick="claimWizard.showAccidentDateGroup();" />    
+                    <label for="workInjuryFalse">{{dictionary.Common_No}} </label>
+                </div>
+                </div>
+            </li>
+            <li>
+                <label>{{dictionary.Claim_SelectConditions_MotorVehiculeAccident}}</label>
+                <div class="controls">
+                <div class="input-group">
+                    <input type="radio" name="motorVehiculeAccident" id="motorVehiculeAccidentTrue" value="1" onclick="claimWizard.showAccidentDateGroup();" />    
+                    <label for="motorVehiculeAccidentTrue">{{dictionary.Common_Yes}}</label>
+                </div>
+                <div class="input-group">
+                    <input type="radio" name="motorVehiculeAccident" id="motorVehiculeAccidentFalse" value="0" onclick="claimWizard.showAccidentDateGroup();" />    
+                    <label for="motorVehiculeAccidentFalse">{{dictionary.Common_No}}</label>
+                </div>
+                </div>
+            </li>
+            <li id="isOrthopedicQuestion">
+                <label>{{dictionary.Claim_SelectConditions_Orthopedic}}</label>
+                <div class="controls">
+                    <div class="input-group">
+                        <input type="radio" name="isOrthopedic" id="isOrthopedicTrue" value="1" />
+                        <label for="isOrthopedicTrue">{{dictionary.Common_Yes}}</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="radio" name="isOrthopedic" id="isOrthopedicFalse" value="0" checked="checked" />
+                        <label for="isOrthopedicFalse">{{dictionary.Common_No}}</label>
+                    </div>
+                </div>
+            </li>
+            </ul>
+        </div>
+   
+        <div id="showAccidentRequired" style="display: none;" class="control-group error">
+            {{dictionary.Claim_AccidentDateRequired}}
+        </div>
+
+
+        <div class="date-group" id="accidentDateGroup" style="display: none;">
+            <div class="control-group">
+            <label for="accidentDate">{{dictionary.Claim_SelectConditions_AccidentDate}}</label>
+            <input name="accidentDate" id="accidentDate" type="date" class="calendar" />    
+            </div>
+        </div>
+
+
+    <div class="form-actions">
+    <a href="#" class="btn primary" onclick="claimWizard.submitClaimConditions();">{{dictionary.Claim_Next}}</a>
+    </div>
+</div>
+
+<div id="claimPictureSelectionPage" style="display: none;">
+    <h1>{{dictionary.Claim_SelectPicture_Title}} <a onclick="claimWizard.showPictureHelp();"><img class="ico" src="data:image/jpeg;base64, {{uiData.helpIcon.thumbnail}}" /></a></h1>
+      
+    <p class="center no-text-shadow">{{dictionary.Claim_SelectPicture_Text}}</p>
+    <ul>
+        <li>
+            <a href="#" class="btn primary" id="claimWizardTakePictureButton" onclick="claimWizard.takePicture();"><span class="center" style="text-align:center;">{{dictionary.Claim_TakePicture}}</span></a>
+        </li>
+        <li>
+            <a href="#" class="btn choices" id="claimWizardPhotoFromLibraryButton" onclick="claimWizard.takePictureFromLibrary();"><span class="center" style="text-align:center;">{{dictionary.Claim_RetrievePicture}}</span></a>
+        </li>
+    </ul>
+    <ul id="claimWizardImageList" class="thumbnails">
+        <li><div class="thumbnail"><img src="" /></div></li>
+        <li><div class="thumbnail"></div></li>
+        <li><div class="thumbnail"></div></li>
+        <li><div class="thumbnail"></div></li>
+        <li><div class="thumbnail"></div></li>
+    </ul>
+
+    <div class="form-actions">
+    <a href="#" id="claimPictureSelectionPageNext" style="display: none;" class="btn primary" onclick="claimWizard.claimSubmitPictures();">{{dictionary.Claim_Next}}</a>
+    </div>
+      
+    <div id="claimPictureHelp" style="display: none;" class="miniOverlay">
+    <h1>{{dictionary.Claim_SelectPictureHelp_Title}}</h1>
+        
+    {{{appData.claimPictureHelp}}}
+    </div>
+</div>
+
+<div id="claimCommentsPage" style="display: none;">
+    <h1>{{dictionary.Claim_AddComment_Title}}</h1>
+    <fieldset class="flex">
+    <p class="center">{{dictionary.Claim_AddComment_Text}}</p>
+    <textarea id="claimCommentText" maxlength="1000" class="font-size-form-element" placeholder="{{dictionary.Claim_AddComment_Placeholder}}"/>    
+    </fieldset>
+    <div class="form-actions">
+    <a href="#" class="btn primary" onclick="claimWizard.submitClaimComments();">{{dictionary.Claim_Next}}</a>
+    </div>
+</div>
+
+<div id="claimTermsPage" style="display: none;">
+    <h1>{{dictionary.Claim_Terms_Title}}</h1>
+    <fieldset class="flex">
+        <p>{{{assocData.insurer.claimTerms}}}</p>
+        <div id="claimTerms"></div>
+        <div id="agreeError" class="control-group error" style="display: none;">{{dictionary.Claim_Agree_Required}}</div>  
+        <div class="check-group transparent">
+        <label class="checkbox" id="agreeLabel" for="agree" style="margin-bottom: 16px;"><input type="checkbox" id="agree" name="agree" value="agree" title="{{dictionary.Profile_Terms_Required}}" />  {{dictionary.Profile_Terms_Claim_Agree}}</label>
+        </div>
+    </fieldset>
+    <div class="form-actions"> 
+    <a href="#" class="btn secondary half-width m-right" onclick="claimWizard.cancelClaim();">{{dictionary.Common_Cancel}}</a>
+    <a href="#" class="btn primary half-width" onclick="claimWizard.submitClaimTerms();">{{dictionary.Claim_Submit}}</a>
+    </div>
+</div>
+
+<div id="claimUploadPage" style="display: none;">
+    <h1 class="error">{{dictionary.Claim_Upload_Title}}</h1>
+    <fieldset class="flex">
+        <p class="center m-after">{{dictionary.Claim_Upload_Text}}</p>
+        <div id="claimUploadProgress"></div>
+    </fieldset>
+    <div class="form-actions">  
+        <a href="#" class="btn secondary" onclick="claimWizard.cancelClaimUpload();">{{dictionary.Common_Cancel}}</a>
+    </div>
+</div>
+
+<div id="claimSubmissionError" style="display: none;">
+        <fieldset class="flex">
+            <p class="center">{{dictionary.Claim_UploadFail_Text}}</p>
+            <div id="claimSubmissionErrorInformation"></div>
+        </fieldset>
+        <div class="form-actions">      
+        <a href="#" class="btn secondary half-width m-right" onclick="claimWizard.failClaim();">{{dictionary.Common_Cancel}}</a>
+        <a href="#" class="btn primary half-width" onclick="claimWizard.uploadFailRetry();">{{dictionary.Claim_Retry}}</a>
+        </div>
+</div>
+    
+<div id="claimFail" style="display: none;">
+    <fieldset class="flex">
+        <p class="center m-after">{{dictionary.Claim_Fail_SmallTitle}}</p>
+        <p class="center">{{dictionary.Claim_Fail_Text}}</p>
+    </fieldset>
+    <div class="form-actions">
+        <a href="#" class="btn primary half-width" onclick="window.app.screens.claimHistory.show();">{{dictionary.MainMenu_ClaimHistory}}</a>
+        <a href="#" class="btn alternative half-width m-right" onclick="window.app.screens.mainMenu.show();">{{dictionary.MainMenu_Home}}</a>
+    </div>
+</div>
+
+<div id="claimConfirmPage" style="display: none;">
+    <h1>{{profile.firstName}}{{dictionary.Claim_Confirm_Title}}</h1>
+    <fieldset class="flex">
+        <ul>
+        <li>
+            {{dictionary.Claim_Confirm_FileNumber}}
+            <span id="fileNumber" class="highlight">##FileNumber##</span>
+        </li>
+        <li>{{dictionary.Claim_Confirm_Phone}} <span class="highlight">{{assocData.supportPhone}}</span></li>
+        <li>{{dictionary.Claim_Confirm_Email}} <span class="highlight">{{profile.email}}</span></li>
+        </ul>
+    </fieldset>
+    <div class="controls">
+    <a href="#" class="btn alternative" onclick="window.app.screens.mainMenu.claim();">{{dictionary.Claim_MakeAnother}}</a>
+    <a href="#" class="btn primary" onclick="window.app.screens.mainMenu.home();">{{dictionary.MainMenu_Home}}</a>
+    </div>
+</div>
+{{> footer}}
+</section>

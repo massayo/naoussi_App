@@ -1,0 +1,16 @@
+﻿<section id="{{containerId}}" class="screen">
+    {{> header}}
+    <h1>{{dictionary.Benefit_List_Title}}</h1>
+    <ul class="flex">
+    {{#each data.benefits}}
+        <li>
+            <a href="#" class="btn choices" onclick="window.app.screens.benefitList.benefitDetail({{id}}); return false;">
+                <img class="ico" src="data:image/jpg;base64, {{benefitImage.thumbnail}}" />
+                <span>{{shortDescription}}</span>
+                <span class="ico"><img src="data:image/jpeg;base64,{{../uiData.ButtonIcon.thumbnail}}" class="ico"/></span>
+            </a>
+        </li>
+    {{/each}}
+    </ul>
+    {{> footer}}
+</section>

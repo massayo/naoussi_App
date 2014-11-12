@@ -1,0 +1,48 @@
+﻿    </div>
+{{#if profile}}
+    <footer>
+        <a href="#" class="btn nav {{#if footer.home}}selected{{/if}}" id="home" onclick="window.app.currentScreen.footerMenuClick(window.app.screens.mainMenu.home);">
+            {{#if footer.home}}
+                <img alt="{{uiData.HomeButton.alt}}" src="data:image/jpeg;base64,{{uiData.HomeButtonSelected.presentation}}" />
+            {{else}}
+                <img alt="{{uiData.HomeButton.alt}}" src="data:image/jpeg;base64,{{uiData.HomeButton.presentation}}" />
+            {{/if}}
+            <span>{{dictionary.MainMenu_Home}}</span>
+        </a>
+        <a href="#" class="btn nav {{#if footer.alerts}}selected{{/if}}" id="alerts" onclick="window.app.currentScreen.footerMenuClick(window.app.screens.mainMenu.alerts);" title="{{nbUnreadAlerts}}" style="position: relative;">
+            {{#if footer.alerts}}
+                <img alt="{{uiData.AlertsButton.alt}}" src="data:image/jpeg;base64,{{uiData.AlertsButtonSelected.presentation}}" />
+            {{else}}
+                <img alt="{{uiData.AlertsButton.alt}}" src="data:image/jpeg;base64,{{uiData.AlertsButton.presentation}}" />
+            {{/if}}
+            <span>{{dictionary.MainMenu_Alerts}}</span>
+            {{#if hasUnreadAlerts}}
+                <span class="alertCount">{{nbUnreadAlerts}}</span>
+            {{/if}}
+        </a> 
+        <a href="#" class="btn nav {{#if footer.support}}selected{{/if}}" id="support" onclick="window.app.currentScreen.footerMenuClick(window.app.screens.mainMenu.support);">
+            {{#if footer.support}}
+                <img alt="{{uiData.SupportButton.alt}}" src="data:image/jpeg;base64,{{uiData.SupportButtonSelected.presentation}}" />
+            {{else}}   
+                <img alt="{{uiData.SupportButton.alt}}" src="data:image/jpeg;base64,{{uiData.SupportButton.presentation}}" />
+            {{/if}}
+            <span>{{dictionary.MainMenu_Support}}</span>
+        </a>
+        <a href="#" class="btn nav {{#if footer.profile}}selected{{/if}}" id="profile" onclick="window.app.currentScreen.footerMenuClick(window.app.screens.mainMenu.profile);">
+            {{#if footer.profile}}
+                <img alt="{{uiData.ProfileButton.alt}}" src="data:image/jpeg;base64,{{uiData.ProfileButtonSelected.presentation}}" />
+            {{else}}
+                <img alt="{{uiData.ProfileButton.alt}}" src="data:image/jpeg;base64,{{uiData.ProfileButton.presentation}}" />
+            {{/if}}
+            <span>{{dictionary.MainMenu_Profile}}</span>
+        </a>
+        <a href="#" class="btn nav {{#if footer.more}}selected{{/if}}" id="more" onclick="window.app.currentScreen.footerMenuClick(window.app.screens.mainMenu.more);">
+            {{#if footer.more}}
+                <img alt="{{uiData.MoreButton.alt}}" src="data:image/jpeg;base64,{{uiData.MoreButtonSelected.presentation}}" />
+            {{else}}
+                <img alt="{{uiData.MoreButton.alt}}" src="data:image/jpeg;base64,{{uiData.MoreButton.presentation}}" />
+            {{/if}}
+            <span>{{dictionary.MainMenu_More}}</span>
+        </a>
+    </footer>
+{{/if}}

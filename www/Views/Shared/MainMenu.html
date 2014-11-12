@@ -1,0 +1,69 @@
+﻿<section class="screen" id="{{containerId}}">
+    {{> header}}
+        
+    <h1>{{dictionary.MainMenu_Title}}</h1>
+
+    <ul class="flex">
+        {{#if assocData.hasFileAClaim}}
+        <li>
+            <a class="btn choices" href="#" onclick="window.app.screens.mainMenu.claim();">
+                <img src="data:image/jpeg;base64,{{uiData.FileClaimIcon.thumbnail}}" class="ico"/>
+                <span>{{dictionary.MainMenu_FileClaim}}</span>
+                <span class="ico"><img src="data:image/jpeg;base64,{{uiData.ButtonIcon.thumbnail}}" class="ico"/></span>
+            </a>
+        </li>
+        {{/if}}
+        {{#if data.hasClaims}}
+        <li>
+            <a class="btn choices" href="#" onclick="window.app.screens.mainMenu.claimHistory();">
+                <img src="data:image/jpeg;base64,{{uiData.ClaimHistoryIcon.thumbnail}}" class="ico"/>
+                <span>{{dictionary.MainMenu_ClaimHistory}}</span>
+                <span class="ico">
+                    {{#unless data.hasFailedClaims}}
+                    <img src="data:image/jpeg;base64,{{uiData.ButtonIcon.thumbnail}}" class="ico"/>
+                    {{else}}
+                    <img src="data:image/jpeg;base64,{{uiData.redAlertIcon.thumbnail}}" class="ico"/>
+                    {{/unless}}
+                </span>
+            </a>
+        </li>
+        {{/if}}            
+        {{#if assocData.hasCoverage}}
+        <li>
+            <a class="btn choices" href="#" onclick="window.app.screens.mainMenu.benefit();">
+                <img src="data:image/jpeg;base64,{{uiData.CoverageIcon.thumbnail}}" class="ico"/>
+                <span>{{dictionary.MainMenu_Benefit}}</span>
+                <span class="ico"><img src="data:image/jpeg;base64,{{uiData.ButtonIcon.thumbnail}}" class="ico"/></span>
+            </a>
+        </li>
+        {{/if}}
+        {{#if assocData.hasPayDirectCard}}
+        <li>
+            <a class="btn choices" href="#" onclick="window.app.screens.mainMenu.pay();">
+                <img src="data:image/jpeg;base64,{{uiData.PayDirectCardIcon.thumbnail}}" class="ico"/>
+                <span>{{dictionary.MainMenu_PayDirectCard}}</span>
+                <span class="ico"><img src="data:image/jpeg;base64,{{uiData.ButtonIcon.thumbnail}}" class="ico"/></span>
+            </a>
+        </li>
+        {{/if}}
+        {{#if assocData.hasTravelEmergency}}
+        <li>
+            <a class="btn choices" href="#" onclick="window.app.screens.mainMenu.travel();">
+                <img src="data:image/jpeg;base64,{{uiData.TravelIcon.thumbnail}}" class="ico"/>
+                <span>{{dictionary.MainMenu_TravelEmergency}}</span>
+                <span class="ico"><img src="data:image/jpeg;base64,{{uiData.ButtonIcon.thumbnail}}" class="ico"/></span>
+            </a>
+        </li>
+        {{/if}}
+
+    </ul>
+        {{#unless profile.completed}}
+            <div class="form-actions">
+                <a href="#" class="btn alternative" onclick="window.app.screens.profile.startProfileWizard();">
+                    <span>{{dictionary.Profile_WizardButton}}</span>
+                </a>
+            </div>
+        {{/unless}}
+
+    {{> footer}}
+</section>

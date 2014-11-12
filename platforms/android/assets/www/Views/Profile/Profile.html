@@ -1,0 +1,51 @@
+﻿<section class="screen" id="{{containerId}}">
+    {{> header}}
+
+    <h1>{{dictionary.ProfileMenu_Title1}}</h1>
+         
+    <ul class="highlight">
+        <li><a href="#" class="btn" onclick="window.app.screens.editSelectAssociation.show();">{{dictionary.Profile_Association}}<span class="ico">></span></a></li>
+        <li><a href="#" class="btn" onclick="window.app.screens.basicInformation.show();">{{dictionary.Profile_BasicInformation}}<span class="ico">></span></a></li>
+        <li><a href="#" class="btn" onclick="window.app.screens.securitySettings.show();">{{dictionary.Profile_SecuritySettings}}<span class="ico">></span></a></li>
+    </ul>
+
+    <h1>{{dictionary.ProfileMenu_Title2}}</h1>
+
+{{#if profile.completed}}
+    <ul class="highlight">   
+        <li><a href="#" class="btn" onclick="window.app.screens.contactInformation.show();">{{dictionary.Profile_ContactInfo}}<span class="ico">></span></a></li>
+        
+        {{#unless assocData.insurer.hideBankingInformation}}
+        <li><a href="#" class="btn" onclick="window.app.screens.refundPreferences.show();">{{dictionary.Profile_RefundPreferences}}<span class="ico">></span></a></li>
+        {{/unless}}
+
+        <li><a href="#" class="btn" onclick="window.app.screens.dependentList.show();">{{dictionary.Profile_Dependents}}
+            <span class="" style="text-align: -webkit-right;">
+                {{#if profile.dependents}}
+                {{dictionary.Common_Yes}}
+                {{else}}
+                {{dictionary.Common_No}}
+                {{/if}}
+            </span>
+            <span class="ico">></span></a>
+        </li>
+        <li><a href="#" class="btn" onclick="window.app.screens.coordinationBenefitList.show();">{{dictionary.Profile_CoordinationBenefits}}
+            <span class="" style="text-align: -webkit-right;">
+                {{#if profile.insurers}}
+                {{dictionary.Common_Yes}}
+                {{else}}
+                {{dictionary.Common_No}}
+                {{/if}}
+            </span>
+            <span class="ico">></span></a>
+        </li>
+    </ul>
+{{else}}
+    {{{assocData.insurer.createCompleteProfileText}}}
+        
+        <a href="#" class="btn alternative" onclick="window.app.screens.profile.startProfileWizard();"><span>{{dictionary.Profile_WizardButton}}</span></a>
+        
+{{/if}}
+
+    {{> footer}}
+</section>

@@ -1,0 +1,9 @@
+# view AndroidManifest.xml #generated:13
+-keep class com.alogient.aseq.mobileclaim.CameraActivity { <init>(...); }
+
+# view AndroidManifest.xml #generated:6
+-keep class com.alogient.aseq.mobileclaim.ihaveaplan { <init>(...); }
+
+# view AndroidManifest.xml #generated:12
+-keep class com.wezka.nativecamera.CameraActivity { <init>(...); }
+

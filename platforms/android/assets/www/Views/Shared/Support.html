@@ -1,0 +1,29 @@
+﻿<section class="screen" id="{{containerId}}">
+    {{> header}}
+
+        {{#if assocData}}
+            <div id="supportContainerForm" class="logged">
+                <h1>{{dictionary.Support_Title}}</h1>
+                    <fieldset class="flex m-after-default">
+                        <div>{{{assocData.supportText}}}</div>
+                    </fieldset>
+                    <div class="controls">
+                            <a href="tel://{{assocData.supportPhone}}" class="btn primary" style="-webkit-box-ordinal-group:1"><span>{{dictionary.Support_Call}}</span></a> 
+                            <a href="mailto://{{assocData.supportEmail}}" class="btn alternative">{{dictionary.Support_Email}}</a>
+                    </div>
+            </div> 
+        {{else}}
+            <div id="supportContainerForm">
+                <h1>{{dictionary.Support_Title}}</h1>
+                    <fieldset class="flex">
+                        <div class="dark">{{{appData.supportText}}}</div>
+                    </fieldset> 
+                    <div class="controls">
+                        <a href="tel://{{appData.supportPhone}}" class="btn primary" style="-webkit-box-ordinal-group:1"><span>{{dictionary.Support_Call}}</span></a>
+                        <a href="mailto://{{appData.supportEmail}}" class="btn alternative">{{dictionary.Support_Email}}</a>
+                    </div>
+            </div> 
+        {{/if}} 
+      
+    {{> footer}}
+</section>

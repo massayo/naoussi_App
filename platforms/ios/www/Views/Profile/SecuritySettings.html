@@ -1,0 +1,44 @@
+﻿<section class="screen" id="{{containerId}}">
+    {{> header}}
+
+    <h1>{{dictionary.Profile_Title}}</h1>
+
+    <p class="dark center m-after">{{dictionary.Profile_SecuritySettings_Text}}</p>
+
+    <form id="profileForm" class="form-profile security-settings">
+        <fieldset>
+            <legend>{{dictionary.Profile_SecurePassword_Title}}</legend>
+            <input type="hidden" name="id" value="{{profile.id}}" />
+            <div class="control-group legend-margin">
+                <label class="control-label" for="oldPassword">{{dictionary.Profile_OldPassword_Label}}</label>
+                <input type="password" class="" id="oldPassword" name="oldPassword" value="" title="{{dictionary.Profile_OldPassword_Required}}" />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="newPassword">{{dictionary.Profile_NewPassword_Label}}</label>
+                <input type="password" class="" id="newPassword" name="newPassword" value="" title="{{dictionary.Profile_NewPassword_Required}}" />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="confirmPassword">{{dictionary.Profile_ConfirmPassword_Label}}</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" value="" title="{{dictionary.Profile_ConfirmPassword_Validation}}" />
+            </div>
+            <p>{{dictionary.Profile_SecuritySettings_SecondText}}</p>
+        </fieldset>
+
+        <fieldset>
+            <p class="subText legend-margin">{{dictionary.Profile_LogoutOptions_Label}}</p>
+            <div class="radio-group transparent">
+                    <label class="white"><input type="radio" id="logoutOption-yes" name="logoutOption" value="true" checked="checked" />{{dictionary.Profile_LogoutOption_Yes}}</label>
+            </div>
+            <div class="radio-group">
+                    <label class="white"><input type="radio" id="logoutOption-no" name="logoutOption" value="false" />{{dictionary.Profile_LogoutOption_No}}</label>
+            </div>
+        </fieldset>
+
+        <div class="form-actions">
+            <button type="submit" class="btn primary"><span>{{dictionary.Profile_Submit}}</span></button>
+            <a href="#" class="btn secondary m-right" onclick="window.app.screens.mainMenu.profile();">{{dictionary.Profile_Cancel}}</a>
+        </div>
+    </form>
+        
+    {{> footer}}
+</section>

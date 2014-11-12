@@ -1,0 +1,35 @@
+﻿<h1>{please enter your pin}</h1>
+<table class="dial">
+    <thead>
+        <tr>
+            <td colspan="3">
+                <input class="span3" type="password" id="pin1" value="" disabled />
+                <input class="span3" type="password" id="pin2" value="" disabled />
+                <input class="span3" type="password" id="pin3" value="" disabled />
+                <input class="span3" type="password" id="pin4" value="" disabled />
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><button type="button" class="btn btn-large" onclick="addButtonClick(this);" data="1">1</button></td>
+            <td><button type="button" class="btn btn-large" onclick="addButtonClick(this);" data="2">2<span class="sub-letters">abc</span></button></td>
+            <td><button type="button" class="btn btn-large" onclick="addButtonClick(this);" data="3">3<span class="sub-letters">def</span></button></td>
+        </tr>
+        <tr>
+            <td><button type="button" class="btn btn-large" onclick="addButtonClick(this);" data="4">4<span class="sub-letters">ghi</span></button></td>
+            <td><button type="button" class="btn btn-large" onclick="addButtonClick(this);" data="5">5<span class="sub-letters">jkl</span></button></td>
+            <td><button type="button" class="btn btn-large" onclick="addButtonClick(this);" data="6">6<span class="sub-letters">mno</span></button></td>
+        </tr>
+        <tr>
+            <td><button type="button" class="btn btn-large" onclick="addButtonClick(this);" data="7">7<span class="sub-letters">pqrs</span></button></td>
+            <td><button type="button" class="btn btn-large" onclick="addButtonClick(this);" data="8">8<span class="sub-letters">tuv</span></button></td>
+            <td><button type="button" class="btn btn-large" onclick="addButtonClick(this);" data="9">9<span class="sub-letters">wxyz</span></button></td>
+        </tr>
+        <tr>
+            <td><button type="button" class="btn btn-large">{change profile}</button></td>
+            <td><button type="button" class="btn btn-large" onclick="addButtonClick(this);">0</button></td>
+            <td><button type="button" class="btn btn-large" onclick="delFromPin();">{del}</button></td>
+        </tr>
+    </tbody>
+</table>

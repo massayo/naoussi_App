@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="com.alogient.aseq.mobileclaim" version="2.1.0" versionCode="10" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="AndroidLaunchMode" value="singleTop" />
+    <feature name="App">
+        <param name="android-package" value="org.apache.cordova.App" />
+    </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="NetworkStatus">
+        <param name="android-package" value="org.apache.cordova.networkinformation.NetworkManager" />
+    </feature>
+    <feature name="Camera">
+        <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+    </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
+    <name>ihaveaplan</name>
+    <description>
+		description - com.alogient.aseq.mobileclaim
+	</description>
+    <author email="support@alogient.com" href="http://www.alogient.com">
+		Alogient
+	</author>
+    <preference name="phonegap-version" value="3.5.0" />
+    <preference name="orientation" value="portrait" />
+    <preference name="fullscreen" value="true" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="prerendered-icon" value="false" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="target-device" value="handset" />
+    <preference name="show-splash-screen-spinner" value="true" />
+    <preference name="EnableViewportScale" value="false" />
+    <preference name="ios-statusbarstyle" value="black-opaque" />
+    <preference name="LoadUrlTimeoutValue" value="10000" />
+    <preference name="permissions" value="none" />
+    <icon src="www/icon.png" />
+    <icon gap:platform="ios" height="57" src="www/icons/ios/apple-touch-icon.png" width="57" />
+    <icon gap:platform="ios" height="72" src="www/icons/ios/apple-touch-icon-72x72.png" width="72" />
+    <icon gap:platform="ios" height="114" src="www/icons/ios/apple-touch-icon-114x114.png" width="114" />
+    <icon gap:platform="ios" height="120" src="www/icons/ios/apple-touch-icon-120x120.png" width="120" />
+    <gap:splash height="480" src="www/splash/ios/AseqSplash320.png" width="320" />
+    <gap:splash height="960" src="www/splash/ios/AseqSplash640.png" width="640" />
+    <gap:splash gap:platform="ios" height="1136" src="www/splash/ios/640X1136.png" width="640" />
+    <gap:platform name="ios" />
+    <feature name="http://api.phonegap.com/1.0/battery" />
+    <feature name="http://api.phonegap.com/1.0/camera" />
+    <feature name="http://api.phonegap.com/1.0/contacts" />
+    <feature name="http://api.phonegap.com/1.0/file" />
+    <feature name="http://api.phonegap.com/1.0/media" />
+    <feature name="http://api.phonegap.com/1.0/network" />
+    <feature name="http://api.phonegap.com/1.0/notification" />
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <plugin name="File" value="CDVFile" />
+    <plugin name="FileTransfer" value="CDVFileTransfer" />
+    <plugin name="Capture" value="CDVCapture" />
+    <plugin name="Camera" value="CDVCamera" />
+    <access origin="*" />
+</widget>

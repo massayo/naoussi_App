@@ -1,0 +1,151 @@
+﻿<section class="screen" id="{{containerId}}">
+    <h1>{{dictionary.Profile_Title}}</h1>
+    <form id="profileForm" class="form-profile m-after-default" action="">
+        <fieldset>
+            <input type="hidden" name="id" value="{{profile.id}}" />
+            <legend>{{dictionary.Profile_StudentAssociation_Title}}</legend>
+            <select id="association" name="association" onChange="window.app.screens.editProfile.selectedAssociationChange();">
+                {{#each data.associations}}
+                    <option value="{{id}}">{{name}}</option>
+                {{/each}}
+            </select>
+        </fieldset>
+        <fieldset>
+            <legend>{{dictionary.Profile_Identification_Title}}</legend>
+            <div class="control-group">
+                <label class="control-label" for="studentId">{{dictionary.Profile_StudentID_Label}}</label>
+                <input type="text" class="required" id="studentId" name="studentId" value="{{profile.studentId}}" placeholder="{{dictionary.Profile_StudentID_PlaceHolder}}" title="{{dictionary.Profile_StudentID_Required}}" />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="email">{{dictionary.Profile_Email_Label}}</label>
+                <input type="email" class="required" id="email" name="email" value="{{profile.email}}" placeholder="{{dictionary.Profile_Email_PlaceHolder}}" title="{{dictionary.Profile_Email_Required}}" />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="confirmEmail">{{dictionary.Profile_ConfirmEmail_Label}}</label>
+                <input type="email" id="confirmEmail" name="confirmEmail" value="{{profile.email}}" placeholder="{{dictionary.Profile_ConfirmEmail_PlaceHolder}}" title="{{dictionary.Profile_ConfirmEmail_Validate}}" />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="firstname">{{dictionary.Profile_FirstName_Label}}</label>
+                <input type="text" class="required" id="firstname" name="firstname" value="{{profile.firstName}}" placeholder="{{dictionary.Profile_FirstName_PlaceHolder}}" title="{{dictionary.Profile_FirstName_Required}}" />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="lastname">{{dictionary.Profile_LastName_Label}}</label>
+                <input type="text" class="required" id="lastname" name="lastname" value="{{profile.lastName}}" placeholder="{{dictionary.Profile_LastName_PlaceHolder}}" title="{{dictionary.Profile_LastName_Required}}" />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="birthdate">{{dictionary.Profile_DateOfBirth_Label}}</label>
+                <input type="date" class="required" id="birthdate" name="birthdate" value="{{profile.dateOfBirth}}" placeholder="{{dictionary.Profile_DateOfBirth_PlaceHolder}}" title="{{dictionary.Profile_DateOfBirth_Required}}" />
+            </div>
+            <div class="control-group">
+                <label class="control-label">{{dictionary.Profile_Gender_Label}}</label>
+                <div class="controls">
+                    <label class="radio" for="male">                            
+                        {{dictionary.Profile_Gender_Male}}
+                    </label>
+                    <input type="radio" name="gender" id="male" value="male" title="{{dictionary.Profile_Gender_Required}}" />
+
+                    <label class="radio" for="female">                            
+                        {{dictionary.Profile_Gender_Female}}
+                    </label>
+                    <input type="radio" name="gender" id="female" value="female" />
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>{{dictionary.Profile_SecurePassword_Title}}</legend>
+            <div class="control-group">
+                <label class="control-label" for="password">{{dictionary.Profile_Password_Label}}</label>
+                <input type="password" id="password" name="password" value="" title="{{dictionary.Profile_Password_Required}}" />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="confirmPassword">{{dictionary.Profile_ConfirmPassword_Label}}</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" value="" title="{{dictionary.Profile_ConfirmPassword_Validation}}" />
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>{{dictionary.Profile_ContactInfo_Title}}</legend>
+            <div class="control-group">
+                <label class="control-label" for="address1">{{dictionary.Profile_Address_Label}}</label>
+                <input type="text" class="required" id="address1" name="address1" value="{{profile.address1}}" placeholder="{{dictionary.Profile_Address_PlaceHolder}}" title="{{dictionary.Profile_Address_Required}}" />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="address2">{{dictionary.Profile_Address2_Label}}</label>
+                <input type="text" id="address2" name="address2" value="{{profile.address2}}" placeholder="{{dictionary.Profile_Address2_PlaceHolder}}" />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="city">{{dictionary.Profile_City_Label}}</label>
+                <input type="text" class="required" id="city" name="city" value="{{profile.city}}" placeholder="{{dictionary.Profile_City_PlaceHolder}}" title="{{dictionary.Profile_City_Required}}" />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="province">{{dictionary.Profile_Province_Label}}</label>
+                <select id="province" class="required" title="{{dictionary.Profile_Province_Required}}">
+                    {{#each data.provinces}}
+                        <option value="{{id}}">{{name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="postalCode">{{dictionary.Profile_PostalCode_Label}}</label>
+                <input type="text" id="postalCode" name="postalCode" value="{{profile.postalCode}}" placeholder="{{dictionary.Profile_PostalCode_PlaceHolder}}" title="{{dictionary.Profile_PostalCode_Required}}" />
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>{{dictionary.Profile_RefundPreferences_Title}}</legend>
+            <div class="control-group">
+                <div class="controls">
+                    <label class="radio" for="check">                            
+                        {{dictionary.Profile_RefundType_Check}}
+                    </label>
+                    <input type="radio" name="refundType" id="check" value="check" checked />
+
+                    <label class="radio" for="direct">                            
+                        {{dictionary.Profile_RefundType_Direct}}
+                    </label>
+                    <input type="radio" name="refundType" id="direct" value="direct" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="bank">{{dictionary.Profile_Bank_Label}}</label>
+                <input type="text" class="required" id="bank" name="bank" value="{{profile.bank}}" placeholder="{{dictionary.Profile_Bank_PlaceHolder}}" title="{{dictionary.Profile_Bank_Required}}" />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="bankAccountNumber">{{dictionary.Profile_AccountNumber_Label}}</label>
+                <input type="password" class="required" id="bankAccountNumber" name="bankAccountNumber" value="{{profile.bankAccountNumber}}" title="{{dictionary.Profile_AccountNumber_Required}}" />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="bankTransitNumber">{{dictionary.Profile_BankTransitNumber_Label}}</label>
+                <input type="password" class="required" id="bankTransitNumber" name="bankTransitNumber" value="{{profile.bankTransitNumber}}" title="{{dictionary.Profile_BankTransitNumber_Required}}" /> (?)
+            </div>
+        </fieldset>
+        <fieldset id="preferred-language-fieldset">
+            <legend>{{dictionary.Profile_Language_Title}}</legend>
+            <div class="control-group">
+                <div class="controls">
+                    <label class="radio" for="english">                            
+                        {{dictionary.Profile_Language_English}}
+                    </label>
+                    <input type="radio" name="preferredLanguage" id="english" value="en-CA" />
+
+                    <label class="radio" for="french">                            
+                        {{dictionary.Profile_Language_French}}
+                    </label>
+                    <input type="radio" name="preferredLanguage" id="french" value="fr-CA" />
+                </div>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>{{dictionary.Profile_Terms_Title}}</legend>
+            <div class="control-group">
+                <label class="checkbox inline" for="agree">
+                    <input type="checkbox" id="agree" name="agree" value="agree" title="{{dictionary.Profile_Terms_Required}}" />
+                    {{dictionary.Profile_Terms_Agree}}
+                </label>
+                <button type="button" class="btn">{{dictionary.Profile_ViewTerms}}</button>
+            </div>
+        </fieldset>
+        <div class="form-actions">
+            <button type="submit" class="btn primary">{{dictionary.Profile_Submit}}</button>
+            <a href="#" class="btn secondary" onclick="window.app.screens.mainMenu.settings();">{{dictionary.Profile_Cancel}}</a>
+        </div>
+    </form>
+</section>

@@ -1,0 +1,68 @@
+﻿<section class="horizontal" id="{{containerId}}">
+    <div class="status-bar">
+    
+    </div>
+    <table class="card">
+        <tr>
+            <td rowspan="4" class="payDirectCardBackCol" onclick="window.app.screens.payDirectCardIntro.show();">
+                <img class="ico" src="data:image/jpeg;base64, {{uiData.whiteArrowIcon.thumbnail}}" />
+            </td>
+            <td colspan="2" class="header-logo">
+                <img alt="" src="data:image/jpeg;base64,{{appData.payDirectHeaderLogo.thumbnail}}" />
+            </td>
+            <td class="header">
+                <h1>{{dictionary.PayDirect_Title}}</h1>
+                {{{assocData.insurer.payDirectText}}}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3" class="plan">
+                <h1>{{assocData.payDirectCardPlanTitle}}</h1>
+            </td>
+        </tr>
+        <tr class="main-card">
+            <td colspan="3" class="first-row">
+                <table>
+                    <tr class="main-title">
+                        <td class="first">{{assocData.insurer.payDirectCarrierLabel}}</td>
+                        <td class="second">{{dictionary.PayDirect_GroupNumber}}</td>
+                        <td class="last">{{assocData.insurer.payDirectIdNumberLabel}}</td>
+                    </tr>
+                    <tr class="main-description">
+                        <td class="first">
+                            {{#if assocData.insurer.payDirectShowCarrierNumber}}
+                            <span>{{assocData.carrierNumber}}</span>
+                            {{/if}}
+                        </td>
+                        <td class="second"><span>{{assocData.groupNumber}}</span></td>
+                        <td class="last">
+                            <span>
+                                {{#if assocData.insurer.payDirectIdNumberPrefixGroupNumber}}
+                                {{assocData.groupNumber}}{{profile.studentId}}
+                                {{else}}
+                                {{profile.studentId}}
+                                {{/if}}                            
+                            </span>
+                            {{#if assocData.insurer.payDirectIdNumberPrefixGroupNumber}}
+                            <div style="font-weight: bold; margin: 4px;">
+                                {{assocData.groupNumber}} + {{assocData.studentIdTitle}}
+                            </div>
+                            {{/if}}
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr class="footer">
+            <td colspan="2" class="logo">
+                <img alt="" src="data:image/jpeg;base64,{{assocData.insurer.payDirectFooterLogo.presentation}}" />
+            </td>
+            <td class="member-profile">
+                <h1>{{profile.firstName}} {{profile.lastName}}</h1>
+                <hr />
+                {{dictionary.PayDirect_StudentName}}
+            </td>
+        </tr>
+    </table>
+</section>

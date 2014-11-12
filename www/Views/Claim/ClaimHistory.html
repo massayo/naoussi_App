@@ -1,0 +1,82 @@
+﻿<section class="screen" id="{{containerId}}">
+    {{> header}}
+
+    <div id="claimHistoryList">
+    <h1>{{dictionary.ClaimHistory_Title}}</h1>
+        
+    <p class="center">
+        {{dictionary.ClaimHistory_Text}}
+    </p>
+
+    {{#if data.empty}}
+        {{dictionary.ClaimHistory_Empty}}
+    {{else}}
+        {{#if data.hasNotSentClaims}}
+            <fieldset class="warning">
+                <legend>{{dictionary.ClaimHistory_NotSent}}</legend>
+                <div class="legend-margin">
+                    <div class="control-group">
+                        <p><img class="ico" src="data:image/jpeg;base64,{{uiData.ClaimPending.thumbnail}}" alt="{{uiData.ClaimPending.alt}}" /> 
+                        {{dictionary.ClaimHistory_Pending_Legend}}</p>
+                    </div>
+                </div>
+                <ul>
+                    {{#each data.failedClaims}}
+                        <li class="group-wrapper">
+                            <div class="group-text-icon">
+                                <span class="group-text">
+                                    <span>{{type}} # 0</span> - ({{pictures.length}}) Image(s)<br>
+                                    {{../dictionary.ClaimHistory_For}}
+                                        {{#each persons}} <span class="person" data-id="{{.}}">{{.}}</span>, {{/each}} <br /> 
+                                    {{../dictionary.ClaimHistory_On}} {{date-to-string date}} <br /> 
+                                    <span>{{../assocData.appTitleName}} - {{../dictionary.ClaimHistory_Policy}} {{../assocData.groupNumber}}</span>  
+                                </span>
+                                <span class="group-icon">
+                                    <a href="#" class="claim-pending-a" data-clickParam="{{position}}">
+                                        <img class="small" src="data:image/jpeg;base64,{{../uiData.ClaimReloadIcon.thumbnail}}" alt="{{../uiData.ClaimReloadIcon.alt}}" />
+                                    </a>
+                                    <a href="#" class="claim-delete-a" data-clickParam="{{position}}">
+                                        <img class="small" src="data:image/jpeg;base64,{{../uiData.DeleteIcon.thumbnail}}" alt="{{../uiData.DeleteIcon.alt}}" />
+                                    </a>
+                                </span>
+                            </div>
+                        </li>
+                    {{/each}}
+                </ul>
+            </fieldset>
+        {{/if}}
+        {{#if data.hasSubmittedClaims}}
+            <fieldset>
+                <legend>{{dictionary.ClaimHistory_Submitted}}</legend>
+                <ul class="legend-margin">
+                    {{#each data.claims}}
+                        <li class="group-wrapper transparent no-border">
+                            <div class="group-text-icon">
+                                <span class="group-text">
+                                    <span>{{type}} # {{seqId}}</span> - ({{imageCount}}) Image(s)<br>
+                                    {{../dictionary.ClaimHistory_For}} {{name}}<br>
+                                    {{../dictionary.ClaimHistory_On}} {{date-to-string date}}<br>
+                                    {{coveragePlan}} - {{../dictionary.ClaimHistory_Policy}} {{policyNumber}}
+                                </span>
+                            </div>
+                        </li>
+                    {{/each}}
+                </ul>
+            </fieldset>
+        {{/if}}
+    {{/if}}
+    </div>
+
+    <div id="claimHistoryUploadPage" style="display: none;">
+        <h1 class="error">{{dictionary.Claim_Upload_Title}}</h1>
+        <fieldset class="flex">
+            <p class="center m-after">{{dictionary.Claim_Upload_Text}}</p>
+            <div id="claimUploadProgress"></div>
+        </fieldset>
+        <div class="form-actions">  
+            <a href="#" class="btn secondary" onclick="claimWizard.cancelClaimUpload();">{{dictionary.Common_Cancel}}</a>
+        </div>
+    </div>
+
+    {{> footer}}
+</section>

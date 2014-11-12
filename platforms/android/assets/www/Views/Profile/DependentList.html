@@ -1,0 +1,60 @@
+﻿<section class="screen" id="{{containerId}}">
+    {{> header}}
+    <div id="dependentListContainerForm">
+        <h1>{{dictionary.Dependent_List_Title}}</h1>
+        <div class="flex">
+                <p class="dark center half-m-after">{{dictionary.Dependent_List_Intro}}</p>
+                <p>{{dictionary.Dependent_List_Presentation}}</p>
+            <ul>
+                {{#each data.dependants}}
+                    <li>
+                        <div class="group-wrapper">
+                            <div class="group-text-icon">
+                                <span class="group-text">
+                                    <span>{{firstName}} {{lastName}}</span><br/>
+                                    {{#navid-to-value ../appData.relationships}}{{relationshipNavId}}{{/navid-to-value}}
+                                </span>
+                                <span class="group-icon">
+                                    <a href="#" class="dependent-btn-edit" data-dependentid="{{id}}" style="margin-right: 16px;">
+                                        <img src="data:image/jpeg;base64,{{../uiData.modifyIcon.thumbnail}}" alt="{{../uiData.modifyIcon.alt}}"/>
+                                    </a>
+                                    <a href="#" class="dependent-btn-delete" data-dependentid="{{id}}">
+                                        <img src="data:image/jpeg;base64,{{../uiData.lessIcon.thumbnail}}" alt="{{../uiData.lessIcon.alt}}"/>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                {{/each}}
+            </ul>
+            {{#unless data.hasDependants}}
+            <ul>
+                <li>
+                    <div class="group-wrapper">
+                        <span>{{dictionary.Dependent_List_Empty}}</span>
+                    </div>
+                </li>
+            </ul>
+            {{#if mobileApp.isInProfileWizard}}
+                <p>{{dictionary.Profile_Dependents_NoneContinue}}</p>
+            {{else}}
+                <p>{{dictionary.Dependent_List_Invite_To_Add}}</p>
+            {{/if}}
+            {{/unless}}
+        </div> 
+        
+    <button type="button" class="btn alternative full-width" onClick="window.app.screens.dependentList.addDependent();"><span>
+        {{#unless data.hasDependants}}
+            {{dictionary.Dependent_List_AddDependent}}
+        {{else}}
+            {{dictionary.Dependent_List_AddAnotherDependent}}
+        {{/unless}}</span></button>
+
+        {{#if mobileApp.isInProfileWizard}}
+            <button type="button" class="btn primary full-width" onClick="window.app.screens.dependentList.wizard();"><span>{{dictionary.Profile_SaveContinue}}</span></button>
+        {{/if}}        
+            
+        <a href="#" class="btn secondary" onclick="window.app.screens.mainMenu.profile();"><span>{{dictionary.Dependent_List_Cancel}}</span></a>
+    </div>
+    {{> footer}}
+</section>

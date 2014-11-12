@@ -1,0 +1,62 @@
+﻿<section class="screen logged-out" id="{{containerId}}">
+    {{> header}}
+    <h1>{{dictionary.Welcome_Title}}</h1>
+    <fieldset> 
+        <p class="center text-shadow">{{dictionary.Welcome_IntroText}}</p>
+        <a class="btn alternative" onclick="window.app.screens.selectAssociation.show();">{{dictionary.Welcome_AddUser_Button}}</a>
+        <p class="dark center">{{dictionary.Welcome_Text}}</p>
+        <div class="radio-group legend-margin">
+            <select onChange="window.app.screens.welcome.loadRemembered(this);">
+                <option value="">{{dictionary.Welcome_SelectLogin}}</option>
+                {{#each data.rememberedProfiles}}
+                <option value="{{email}}">{{firstName}} {{lastName}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div id="emailRequiredError" class="control-group error" style="display: none;">        
+            {{dictionary.Welcome_Email_Required}}
+        </div>
+        <div id="loginError" class="control-group error" style="display: none;">
+            {{dictionary.Welcome_Login_Invalid}}
+        </div>
+        <div id="loginEmailNotValidatedError" class="control-group error" style="display: none;">
+            {{{dictionary.Welcome_EmailNotValidated}}}
+        </div>
+        <div class="loggin">
+            <div class="control-group">
+                <label class="control-label" for="studentId"><span>{{dictionary.Welcome_Email_Label}}</span></label>
+                <input type="email" class="required" id="email" placeholder="{{dictionary.Welcome_Email_PlaceHolder}}" title="{{dictionary.Welcome_Email_Required}}" />
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="password"><span>{{dictionary.Welcome_Password_Label}}</span></label>
+                <input type="password" class="required input-xlarge" id="password" placeholder="{{dictionary.Welcome_Password_PlaceHolder}}" title="{{dictionary.Welcome_Password_Required}}" />
+            </div>
+            <div class="radio-group legend-margin">
+                <label for="rememberMe" class="special-color transparent" style="font-weight: bold; color: #fff;">
+                    <input type="checkbox" id="rememberMe" name="rememberMe" value="rememberMe" />
+                    {{dictionary.Welcome_RememberMe}}
+                </label>
+            </div>
+            <div class="form-actions">
+                <a class="btn primary" onclick="window.app.screens.welcome.login();"><span>{{dictionary.Welcome_Login_Button}}</span></a>
+            </div>
+            
+            <p class="dark">{{dictionary.Welcome_HelpTitle}}</p> 
+            <ul class="link-group">
+                <li>
+                    <a onclick="window.app.screens.forgotPassword.show();">
+                        <img class="ico" src="data:image/jpeg;base64, {{uiData.whiteArrowIcon.thumbnail}}" />
+                        <span>{{dictionary.Welcome_ForgotPassword}}</span>
+                    </a>
+                </li>
+                <li>
+                    <a onclick="window.app.screens.mainMenu.support();">
+                        <img class="ico" src="data:image/jpeg;base64, {{uiData.whiteArrowIcon.thumbnail}}" />
+                        <span>{{dictionary.Welcome_ContactSupport}}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        
+    {{> footer}}
+</section>
