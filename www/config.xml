@@ -57,16 +57,16 @@
 	<feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
     </feature>
-  	<plugin name="File" value="CDVFile" /> 
-  <!-- gap:plugin name="org.apache.cordova.file" /-->
-  	<plugin name="FileTransfer" value="CDVFileTransfer" />
-  <!-- gap:plugin name="org.apache.cordova.file-transfer" /-->
-    <plugin name="Capture" value="CDVCapture" />
-    <plugin name="Camera" value="CDVCamera" />
-  <!-- gap:plugin name="org.apache.cordova.camera" /-->
-
-  <!-- A blank access tag - <access /> - denies access to any external resources. A wildcard - <access origin="*" /> - allows access to any external resource. Otherwise, you can specify allowed domains individually -->
-	<access origin="*" />
+  <access origin="*" />
+    
+      <gap:plugin name="org.apache.cordova.core.camera" />
+    <feature name="File">
+    <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+</feature>
+<feature name="FileTransfer">
+    <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
+</feature>
+<preference name="AndroidPersistentFileLocation" value="Compatibility" />
 </widget>
 
 
